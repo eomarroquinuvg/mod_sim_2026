@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Euler vs. RK4 — CC3074</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-contenido">
+
+        <div>
+            <span class="codigo">CC3074</span>
+
+            <h1>Modelización y Simulación</h1>
+
+            <p>Métodos Numéricos — Euler vs. Runge-Kutta 4</p>
+        </div>
+
+        <a href="../" class="volver">
+            ← Volver al laboratorio
+        </a>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- ================================================
+         HERO
+         ================================================ -->
+
+    <section class="hero">
+
+        <div>
+            <span class="etiqueta">
+                LABORATORIO 02
+            </span>
+
+            <h2>
+                🚀 Euler vs. RK4
+            </h2>
+
+            <p>
+                Euler utiliza una pendiente para avanzar.
+                Runge-Kutta de cuarto orden evalúa cuatro
+                pendientes antes de decidir el siguiente valor.
+            </p>
+        </div>
+
+
+        <div class="comparacion-principal">
+
+            <div>
+                <span>Euler</span>
+                <strong>1 pendiente</strong>
+            </div>
+
+            <b>VS.</b>
+
+            <div>
+                <span>RK4</span>
+                <strong>4 pendientes</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         CONCEPTOS
+         ================================================ -->
+
+    <section class="conceptos">
+
+        <article>
+            <span class="simbolo">k₁</span>
+
+            <div>
+                <strong>Pendiente inicial</strong>
+
+                <p>
+                    Evalúa el comportamiento del sistema
+                    al inicio del paso.
+                </p>
+            </div>
+        </article>
+
+
+        <article>
+            <span class="simbolo">k₂</span>
+
+            <div>
+                <strong>Primera estimación intermedia</strong>
+
+                <p>
+                    Utiliza k₁ para estimar el comportamiento
+                    en la mitad del paso.
+                </p>
+            </div>
+        </article>
+
+
+        <article>
+            <span class="simbolo">k₃</span>
+
+            <div>
+                <strong>Segunda estimación intermedia</strong>
+
+                <p>
+                    Vuelve a evaluar la mitad del paso,
+                    ahora utilizando k₂.
+                </p>
+            </div>
+        </article>
+
+
+        <article>
+            <span class="simbolo">k₄</span>
+
+            <div>
+                <strong>Pendiente final</strong>
+
+                <p>
+                    Utiliza k₃ para estimar el comportamiento
+                    al final del paso.
+                </p>
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- ================================================
+         CASO
+         ================================================ -->
+
+    <section class="caso">
+
+        <div class="caso-icono">
+            ☕
+        </div>
+
+        <div>
+            <span class="mini-etiqueta">
+                MISMO CASO DEL LABORATORIO 01
+            </span>
+
+            <h2>Enfriamiento de Newton</h2>
+
+            <p>
+                Compararemos ambos métodos bajo exactamente
+                las mismas condiciones para que la diferencia
+                provenga únicamente del método numérico.
+            </p>
+        </div>
+
+        <div class="ecuacion">
+            <span>Modelo</span>
+
+            <strong>
+                dT/dt = -k(T - Tₐ)
+            </strong>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         PARÁMETROS
+         ================================================ -->
+
+    <section class="parametros">
+
+        <article>
+            <span>T(0)</span>
+            <strong>90 °C</strong>
+            <small>Temperatura inicial</small>
+        </article>
+
+        <article>
+            <span>Tₐ</span>
+            <strong>20 °C</strong>
+            <small>Temperatura ambiente</small>
+        </article>
+
+        <article>
+            <span>k</span>
+            <strong>0.1</strong>
+            <small>Constante</small>
+        </article>
+
+        <article>
+            <span>h</span>
+            <strong>1 min</strong>
+            <small>Tamaño de paso</small>
+        </article>
+
+    </section>
+
+
+    <!-- ================================================
+         EXPLICACIÓN RK4
+         ================================================ -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <span class="numero">01</span>
+
+            <div>
+                <h3>¿Cómo decide RK4?</h3>
+
+                <p>
+                    Antes de avanzar, analiza cuatro pendientes.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="flujo-rk4">
+
+            <div class="bloque-k">
+                <span>1</span>
+                <strong>k₁</strong>
+                <small>Inicio</small>
+            </div>
+
+            <b>→</b>
+
+            <div class="bloque-k">
+                <span>2</span>
+                <strong>k₂</strong>
+                <small>Mitad</small>
+            </div>
+
+            <b>→</b>
+
+            <div class="bloque-k">
+                <span>3</span>
+                <strong>k₃</strong>
+                <small>Mitad</small>
+            </div>
+
+            <b>→</b>
+
+            <div class="bloque-k">
+                <span>4</span>
+                <strong>k₄</strong>
+                <small>Final</small>
+            </div>
+
+            <b>→</b>
+
+            <div class="bloque-k promedio">
+                <span>✓</span>
+                <strong>Promedio</strong>
+                <small>Ponderado</small>
+            </div>
+
+        </div>
+
+
+        <div class="formula-rk4">
+
+            <span>RK4</span>
+
+            <strong>
+                yₙ₊₁ = yₙ + h(k₁ + 2k₂ + 2k₃ + k₄) / 6
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         SIMULACIÓN
+         ================================================ -->
+
+    <section class="simulacion-grid">
+
+
+        <!-- ESTADO -->
+
+        <article class="panel">
+
+            <div class="panel-header">
+
+                <span class="numero">02</span>
+
+                <div>
+                    <h3>Estado de la simulación</h3>
+
+                    <p>
+                        Ambos métodos comienzan
+                        exactamente en el mismo punto.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="tiempo">
+
+                <span>Tiempo actual</span>
+
+                <strong id="tiempoActual">
+                    0 min
+                </strong>
+
+            </div>
+
+
+            <div class="temperaturas">
+
+                <div class="temperatura exacta">
+
+                    <span>
+                        Solución exacta
+                    </span>
+
+                    <strong id="tempExacta">
+                        90.0000 °C
+                    </strong>
+
+                </div>
+
+
+                <div class="temperatura euler">
+
+                    <span>
+                        Euler
+                    </span>
+
+                    <strong id="tempEuler">
+                        90.0000 °C
+                    </strong>
+
+                </div>
+
+
+                <div class="temperatura rk4">
+
+                    <span>
+                        RK4
+                    </span>
+
+                    <strong id="tempRK4">
+                        90.0000 °C
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="errores">
+
+                <div>
+                    <span>Error Euler</span>
+
+                    <strong id="errorEuler">
+                        0.0000 °C
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>Error RK4</span>
+
+                    <strong id="errorRK4">
+                        0.0000 °C
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div id="interpretacion"
+                 class="interpretacion">
+
+                <span>💡</span>
+
+                <p>
+                    En t = 0 los tres valores coinciden
+                    porque todavía no hemos realizado
+                    ninguna aproximación.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- CÁLCULO RK4 -->
+
+        <article class="panel">
+
+            <div class="panel-header">
+
+                <span class="numero">03</span>
+
+                <div>
+                    <h3>Dentro de un paso de RK4</h3>
+
+                    <p>
+                        Observa las cuatro evaluaciones.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div id="pasoRK4"
+                 class="paso-rk4">
+
+                PASO 0 → 1
+
+            </div>
+
+
+            <!-- K1 -->
+
+            <div id="cardK1"
+                 class="card-k">
+
+                <div class="k-titulo">
+                    <span>k₁</span>
+                    <strong>Pendiente al inicio</strong>
+                </div>
+
+                <div id="formulaK1"
+                     class="formula-k">
+                    -
+                </div>
+
+                <div id="valorK1"
+                     class="valor-k">
+                    -
+                </div>
+
+            </div>
+
+
+            <!-- K2 -->
+
+            <div id="cardK2"
+                 class="card-k">
+
+                <div class="k-titulo">
+                    <span>k₂</span>
+                    <strong>Primera pendiente en la mitad</strong>
+                </div>
+
+                <div id="formulaK2"
+                     class="formula-k">
+                    -
+                </div>
+
+                <div id="valorK2"
+                     class="valor-k">
+                    -
+                </div>
+
+            </div>
+
+
+            <!-- K3 -->
+
+            <div id="cardK3"
+                 class="card-k">
+
+                <div class="k-titulo">
+                    <span>k₃</span>
+                    <strong>Segunda pendiente en la mitad</strong>
+                </div>
+
+                <div id="formulaK3"
+                     class="formula-k">
+                    -
+                </div>
+
+                <div id="valorK3"
+                     class="valor-k">
+                    -
+                </div>
+
+            </div>
+
+
+            <!-- K4 -->
+
+            <div id="cardK4"
+                 class="card-k">
+
+                <div class="k-titulo">
+                    <span>k₄</span>
+                    <strong>Pendiente al final</strong>
+                </div>
+
+                <div id="formulaK4"
+                     class="formula-k">
+                    -
+                </div>
+
+                <div id="valorK4"
+                     class="valor-k">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="promedio-rk4">
+
+                <span>
+                    PROMEDIO PONDERADO
+                </span>
+
+                <div id="formulaPromedio">
+                    -
+                </div>
+
+                <strong id="resultadoRK4">
+                    -
+                </strong>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ================================================
+         CONTROLES INTERNOS DE RK4
+         ================================================ -->
+
+    <section class="controles-rk4">
+
+        <div>
+
+            <span>
+                OBSERVA RK4 POR DENTRO
+            </span>
+
+            <strong id="faseTexto">
+                Listo para calcular k₁
+            </strong>
+
+        </div>
+
+
+        <button id="faseAnterior"
+                class="boton secundario">
+
+            ← Anterior
+
+        </button>
+
+
+        <div class="barra-fases">
+
+            <div id="progresoFases">
+            </div>
+
+        </div>
+
+
+        <button id="faseSiguiente"
+                class="boton amarillo">
+
+            Calcular k₁ →
+
+        </button>
+
+    </section>
+
+
+    <!-- ================================================
+         AVANZAR SIMULACIÓN
+         ================================================ -->
+
+    <section class="controles">
+
+        <button id="anterior"
+                class="boton secundario">
+
+            ← Paso anterior
+
+        </button>
+
+
+        <div class="barra">
+
+            <div id="progreso">
+            </div>
+
+        </div>
+
+
+        <button id="siguiente"
+                class="boton principal">
+
+            Siguiente minuto →
+
+        </button>
+
+
+        <button id="automatico"
+                class="boton principal">
+
+            ▶ Automático
+
+        </button>
+
+
+        <button id="reiniciar"
+                class="boton gris">
+
+            ↻ Reiniciar
+
+        </button>
+
+    </section>
+
+
+    <!-- ================================================
+         GRÁFICA
+         ================================================ -->
+
+    <section class="panel grafica-panel">
+
+        <div class="panel-header">
+
+            <span class="numero">04</span>
+
+            <div>
+                <h3>Comparación gráfica</h3>
+
+                <p>
+                    Exacta, Euler y RK4 sobre el mismo sistema.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="grafica-layout">
+
+            <svg id="grafica"
+                 viewBox="0 0 950 460">
+
+                <g id="cuadricula"></g>
+
+                <line x1="80"
+                      y1="35"
+                      x2="80"
+                      y2="380"
+                      class="eje"/>
+
+                <line x1="80"
+                      y1="380"
+                      x2="900"
+                      y2="380"
+                      class="eje"/>
+
+                <text x="25"
+                      y="40"
+                      class="label-eje">
+                    T (°C)
+                </text>
+
+                <text x="840"
+                      y="425"
+                      class="label-eje">
+                    t (min)
+                </text>
+
+                <path id="curvaExacta"
+                      class="curva-exacta">
+                </path>
+
+                <polyline id="lineaEuler"
+                          class="linea-euler">
+                </polyline>
+
+                <polyline id="lineaRK4"
+                          class="linea-rk4">
+                </polyline>
+
+                <g id="puntosEuler"></g>
+
+                <g id="puntosRK4"></g>
+
+            </svg>
+
+
+            <div class="leyenda">
+
+                <div>
+                    <span class="muestra exacta"></span>
+
+                    <div>
+                        <strong>Exacta</strong>
+                        <small>Referencia</small>
+                    </div>
+                </div>
+
+
+                <div>
+                    <span class="muestra euler"></span>
+
+                    <div>
+                        <strong>Euler</strong>
+                        <small>1 pendiente</small>
+                    </div>
+                </div>
+
+
+                <div>
+                    <span class="muestra rk4"></span>
+
+                    <div>
+                        <strong>RK4</strong>
+                        <small>4 pendientes</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         TABLA
+         ================================================ -->
+
+    <section class="panel tabla-panel">
+
+        <div class="panel-header">
+
+            <span class="numero">05</span>
+
+            <div>
+                <h3>Resultados numéricos</h3>
+
+                <p>
+                    Compara el error absoluto
+                    de cada método.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="tabla-scroll">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>t</th>
+                        <th>Exacta</th>
+                        <th>Euler</th>
+                        <th>Error Euler</th>
+                        <th>RK4</th>
+                        <th>Error RK4</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaResultados">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         CONCLUSIÓN
+         ================================================ -->
+
+    <section class="conclusion">
+
+        <div class="conclusion-icono">
+            🧠
+        </div>
+
+        <div>
+
+            <span>
+                IDEA CENTRAL
+            </span>
+
+            <h2>
+                RK4 consulta más información antes de avanzar
+            </h2>
+
+            <p>
+                Euler utiliza la pendiente del inicio.
+                RK4 combina información del inicio,
+                dos estimaciones intermedias y el final
+                del intervalo. Por eso puede seguir mejor
+                la evolución del sistema con el mismo
+                tamaño de paso.
+            </p>
+
+        </div>
+
+
+        <div class="comparacion-final">
+
+            <div>
+                <strong>Euler</strong>
+
+                <span>
+                    1 pendiente
+                </span>
+            </div>
+
+            <b>→</b>
+
+            <div>
+                <strong>RK4</strong>
+
+                <span>
+                    4 pendientes
+                </span>
+            </div>
+
+            <b>→</b>
+
+            <div>
+                <strong>Resultado</strong>
+
+                <span>
+                    Mejor aproximación
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         SIGUIENTE
+         ================================================ -->
+
+    <section class="siguiente-lab">
+
+        <div>
+            <span>
+                SIGUIENTE LABORATORIO
+            </span>
+
+            <h3>
+                ¿Qué ocurre si modificamos h?
+            </h3>
+
+            <p>
+                Experimenta con diferentes tamaños de paso
+                y observa cómo cambian el error y
+                la cantidad de cálculos.
+            </p>
+        </div>
+
+
+        <a href="../experimento_h/"
+           class="boton-siguiente">
+
+            Experimentar con h →
+
+        </a>
+
+    </section>
+
+
+    <!-- ================================================
+         REGRESO
+         ================================================ -->
+
+    <section class="regreso-laboratorio">
+
+        <div>
+            <span>
+                ✓ LABORATORIO
+            </span>
+
+            <h3>
+                Métodos Numéricos
+            </h3>
+
+            <p>
+                Regresa al menú principal de esta unidad.
+            </p>
+        </div>
+
+
+        <a href="../"
+           class="boton-regreso">
+
+            ← Volver al laboratorio
+
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <strong>
+        CC3074 — Modelización y Simulación
+    </strong>
+
+    <span>
+        Universidad del Valle de Guatemala · 2026
+    </span>
+
+</footer>
+
+
+<script src="./app.js"></script>
+
+</body>
+</html>
