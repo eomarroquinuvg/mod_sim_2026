@@ -1,0 +1,1714 @@
+:root {
+
+    --verde: #008D36;
+    --verde-oscuro: #006629;
+    --verde-claro: #e8f5ed;
+
+    --blanco: #ffffff;
+    --fondo: #f4f7f5;
+
+    --texto: #202722;
+    --gris: #667085;
+    --borde: #dce4df;
+
+    --amarillo: #f4b400;
+    --amarillo-claro: #fff5cf;
+
+    --azul: #287fb8;
+    --rojo: #d9534f;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--fondo);
+
+    color:
+        var(--texto);
+}
+
+
+main {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 35px;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+header {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color: white;
+
+    padding:
+        26px 35px;
+}
+
+
+.header-contenido {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+}
+
+
+.codigo {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+header h1 {
+
+    margin:
+        5px 0;
+}
+
+
+header p {
+
+    margin: 0;
+}
+
+
+.volver {
+
+    color: white;
+
+    text-decoration: none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
+    background:
+        rgba(255,255,255,.1);
+
+    padding:
+        10px 15px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+.volver:hover {
+
+    background:
+        rgba(255,255,255,.2);
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding:
+        30px 0;
+}
+
+
+.etiqueta {
+
+    color:
+        var(--verde);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.hero h2 {
+
+    margin:
+        7px 0;
+
+    font-size: 36px;
+}
+
+
+.hero p {
+
+    color:
+        var(--gris);
+
+    line-height: 1.6;
+
+    max-width: 750px;
+}
+
+
+.formula-principal {
+
+    min-width: 390px;
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    border-radius: 12px;
+
+    padding: 19px 25px;
+
+    text-align: center;
+}
+
+
+.formula-principal span {
+
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.formula-principal strong {
+
+    font-size: 21px;
+}
+
+
+/* =====================================================
+   VARIABLES
+   ===================================================== */
+
+.variables {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.variables article {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+}
+
+
+.variable {
+
+    min-width: 50px;
+
+    height: 50px;
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    font-weight: bold;
+
+    font-size: 20px;
+}
+
+
+.variables p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   CASO
+   ===================================================== */
+
+.caso {
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr auto;
+
+    gap: 20px;
+
+    align-items: center;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-left:
+        6px solid
+        var(--verde);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+.caso-icono {
+
+    width: 70px;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        var(--verde-claro);
+
+    border-radius: 12px;
+
+    font-size: 38px;
+}
+
+
+.mini-etiqueta {
+
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.4px;
+}
+
+
+.caso h2 {
+
+    margin:
+        4px 0;
+}
+
+
+.caso p {
+
+    margin:
+        0;
+
+    color:
+        var(--gris);
+
+    line-height: 1.5;
+}
+
+
+.ecuacion-caso {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    border-radius: 9px;
+
+    padding: 14px 18px;
+
+    text-align: center;
+}
+
+
+.ecuacion-caso span {
+
+    display: block;
+
+    font-size: 9px;
+
+    margin-bottom: 5px;
+}
+
+
+.ecuacion-caso strong {
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   DATOS
+   ===================================================== */
+
+.datos-caso {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+
+.datos-caso article {
+
+    background:
+        var(--verde-claro);
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+
+.datos-caso span {
+
+    color:
+        var(--verde-oscuro);
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.datos-caso strong {
+
+    display: block;
+
+    font-size: 19px;
+
+    margin:
+        4px 0;
+}
+
+
+.datos-caso p {
+
+    margin: 0;
+
+    color:
+        var(--gris);
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   LAB
+   ===================================================== */
+
+.laboratorio {
+
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap: 20px;
+}
+
+
+.panel {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 14px;
+
+    padding: 20px;
+}
+
+
+.panel-header {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+}
+
+
+.numero {
+
+    min-width: 42px;
+
+    height: 42px;
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.panel-header h3 {
+
+    margin: 0;
+}
+
+
+.panel-header p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   TEMPERATURA
+   ===================================================== */
+
+.simulacion-temperatura {
+
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #edf8ff,
+            #ffffff
+        );
+
+    border:
+        1px solid
+        #dceaf1;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+
+.ambiente {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    background:
+        rgba(255,255,255,.8);
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    color:
+        var(--azul);
+}
+
+
+.taza {
+
+    margin:
+        20px 0 5px;
+}
+
+
+.vapor {
+
+    color:
+        #a5a5a5;
+
+    font-size: 24px;
+}
+
+
+.taza-icono {
+
+    font-size: 90px;
+}
+
+
+.temperatura-grande {
+
+    color:
+        var(--rojo);
+
+    margin:
+        5px 0 20px;
+}
+
+
+.temperatura-grande span {
+
+    font-size: 46px;
+
+    font-weight: bold;
+}
+
+
+.temperatura-grande small {
+
+    font-size: 20px;
+}
+
+
+.termometro {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap: 10px;
+
+    max-width: 300px;
+
+    margin: auto;
+
+    align-items: stretch;
+}
+
+
+.barra-termometro {
+
+    height: 180px;
+
+    width: 40px;
+
+    margin: auto;
+
+    background:
+        #e3e7e4;
+
+    border-radius:
+        20px 20px 8px 8px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+#nivelTemperatura {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 90%;
+
+    background:
+        linear-gradient(
+            0deg,
+            #f4b400,
+            #d9534f
+        );
+
+    transition:
+        height .5s;
+}
+
+
+.escala {
+
+    height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content:
+        space-between;
+
+    color:
+        var(--gris);
+
+    font-size: 10px;
+
+    text-align: left;
+}
+
+
+.tiempo-visual {
+
+    margin-top: 18px;
+
+    background: white;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    color:
+        var(--gris);
+}
+
+
+.tiempo-visual strong {
+
+    color:
+        var(--verde-oscuro);
+}
+
+
+/* =====================================================
+   CÁLCULO
+   ===================================================== */
+
+.estado-paso {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding:
+        6px 10px;
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+.estado-actual {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 8px;
+
+    margin:
+        15px 0;
+}
+
+
+.estado-actual div {
+
+    background:
+        #f6f8f7;
+
+    border-radius: 8px;
+
+    padding: 11px;
+}
+
+
+.estado-actual span {
+
+    display: block;
+
+    color:
+        var(--gris);
+
+    font-size: 10px;
+}
+
+
+.estado-actual strong {
+
+    display: block;
+
+    margin-top: 4px;
+}
+
+
+.calculo {
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 9px;
+
+    padding: 14px;
+
+    margin:
+        12px 0;
+}
+
+
+.calculo-titulo {
+
+    color:
+        var(--verde);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.formula-general {
+
+    background:
+        #f5f7f6;
+
+    border-radius: 6px;
+
+    padding: 9px;
+
+    margin-top: 9px;
+
+    text-align: center;
+
+    color:
+        var(--gris);
+
+    font-size: 12px;
+}
+
+
+.formula-calculo {
+
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.resultado-calculo {
+
+    text-align: center;
+
+    margin-top: 8px;
+
+    color:
+        var(--gris);
+}
+
+
+.resultado-calculo.destacado {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    border-radius: 7px;
+
+    padding: 10px;
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+
+.interpretacion,
+.decision {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+}
+
+
+.interpretacion {
+
+    background:
+        var(--amarillo-claro);
+}
+
+
+.decision {
+
+    background:
+        var(--verde-claro);
+}
+
+
+.interpretacion p,
+.decision p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   CONTROLES
+   ===================================================== */
+
+.controles {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    margin:
+        20px 0;
+}
+
+
+.boton {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding:
+        12px 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.boton.principal {
+
+    background:
+        var(--verde);
+
+    color: white;
+}
+
+
+.boton.secundario {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+}
+
+
+.boton.gris {
+
+    background:
+        #e6eae7;
+}
+
+
+.boton:disabled {
+
+    opacity: .35;
+
+    cursor: not-allowed;
+}
+
+
+.barra {
+
+    flex: 1;
+
+    height: 9px;
+
+    background:
+        #dce3de;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+#progreso {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        var(--verde);
+
+    transition:
+        width .4s;
+}
+
+
+/* =====================================================
+   GRÁFICA
+   ===================================================== */
+
+.grafica-panel {
+
+    margin-top: 20px;
+}
+
+
+.grafica-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 180px;
+
+    gap: 20px;
+
+    align-items: center;
+}
+
+
+.grafica {
+
+    margin-top: 15px;
+}
+
+
+#grafica {
+
+    width: 100%;
+
+    display: block;
+}
+
+
+.eje {
+
+    stroke:
+        #68726c;
+
+    stroke-width: 2;
+}
+
+
+.grid-line {
+
+    stroke:
+        #e7ebe8;
+
+    stroke-width: 1;
+}
+
+
+.label-eje {
+
+    fill:
+        var(--gris);
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.label-grid {
+
+    fill:
+        #89928c;
+
+    font-size: 10px;
+}
+
+
+.curva-exacta {
+
+    fill: none;
+
+    stroke:
+        #9aa39d;
+
+    stroke-width: 3;
+
+    stroke-dasharray:
+        8 6;
+}
+
+
+.linea-euler {
+
+    fill: none;
+
+    stroke:
+        var(--verde);
+
+    stroke-width: 4;
+
+    stroke-linejoin: round;
+}
+
+
+.punto-euler {
+
+    fill:
+        var(--verde);
+
+    stroke: white;
+
+    stroke-width: 3;
+}
+
+
+.punto-actual {
+
+    fill:
+        var(--amarillo);
+
+    stroke:
+        #b48500;
+
+    stroke-width: 4;
+}
+
+
+.leyenda-grafica {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.leyenda-grafica > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.linea-leyenda {
+
+    width: 35px;
+
+    height: 5px;
+
+    border-radius: 10px;
+}
+
+
+.linea-leyenda.exacta {
+
+    background:
+        #9aa39d;
+}
+
+
+.linea-leyenda.euler {
+
+    background:
+        var(--verde);
+}
+
+
+.leyenda-grafica small {
+
+    display: block;
+
+    color:
+        var(--gris);
+
+    margin-top: 3px;
+}
+
+
+/* =====================================================
+   TABLA
+   ===================================================== */
+
+.tabla-panel {
+
+    margin-top: 20px;
+}
+
+
+.tabla-scroll {
+
+    overflow-x: auto;
+
+    margin-top: 17px;
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+th {
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    padding: 11px;
+
+    font-size: 12px;
+}
+
+
+td {
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        var(--borde);
+
+    font-size: 12px;
+}
+
+
+tr.actual {
+
+    background:
+        var(--verde-claro);
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   IDEA CENTRAL
+   ===================================================== */
+
+.idea-central {
+
+    margin-top: 25px;
+
+    padding: 23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color: white;
+
+    border-radius: 13px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    gap: 18px;
+}
+
+
+.idea-icono {
+
+    width: 70px;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,.14);
+
+    border-radius: 12px;
+
+    font-size: 35px;
+}
+
+
+.idea-central span {
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.4px;
+}
+
+
+.idea-central h2 {
+
+    margin:
+        5px 0;
+}
+
+
+.idea-central p {
+
+    margin: 0;
+
+    opacity: .9;
+
+    line-height: 1.55;
+}
+
+
+.cadena-euler {
+
+    grid-column:
+        1 / -1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.25);
+
+    padding-top: 18px;
+}
+
+
+.cadena-euler span {
+
+    background:
+        rgba(255,255,255,.13);
+
+    padding:
+        9px 12px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   SIGUIENTE / REGRESO
+   ===================================================== */
+
+.siguiente-lab,
+.regreso-laboratorio {
+
+    margin-top: 25px;
+
+    padding: 21px;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 11px;
+}
+
+
+.siguiente-lab {
+
+    border-left:
+        6px solid
+        var(--amarillo);
+}
+
+
+.regreso-laboratorio {
+
+    border-left:
+        6px solid
+        var(--verde);
+}
+
+
+.siguiente-lab span,
+.regreso-laboratorio span {
+
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.4px;
+}
+
+
+.siguiente-lab h3,
+.regreso-laboratorio h3 {
+
+    margin:
+        5px 0;
+}
+
+
+.siguiente-lab p,
+.regreso-laboratorio p {
+
+    margin: 0;
+
+    color:
+        var(--gris);
+}
+
+
+.boton-siguiente,
+.boton-regreso {
+
+    flex-shrink: 0;
+
+    padding:
+        12px 17px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.boton-siguiente {
+
+    background:
+        var(--amarillo);
+
+    color:
+        #332700;
+}
+
+
+.boton-regreso {
+
+    background:
+        var(--verde);
+
+    color: white;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    background:
+        #202923;
+
+    color:
+        #dce4df;
+
+    text-align: center;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    font-size: 12px;
+}
+
+
+footer span {
+
+    color:
+        #aeb8b1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:1000px) {
+
+    .laboratorio {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .variables,
+    .datos-caso {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .caso {
+
+        grid-template-columns:
+            auto 1fr;
+    }
+
+
+    .ecuacion-caso {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .grafica-layout {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    main {
+
+        padding:
+            20px 10px;
+    }
+
+
+    .header-contenido {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap: 15px;
+    }
+
+
+    .hero {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .formula-principal {
+
+        min-width: 0;
+
+        width: 100%;
+    }
+
+
+    .variables,
+    .datos-caso {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .caso {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .estado-actual {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .controles {
+
+        flex-wrap: wrap;
+    }
+
+
+    .barra {
+
+        flex-basis: 100%;
+
+        order: 10;
+    }
+
+
+    .idea-central {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .cadena-euler {
+
+        flex-direction:
+            column;
+    }
+
+
+    .siguiente-lab,
+    .regreso-laboratorio {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .boton-siguiente,
+    .boton-regreso {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+}
