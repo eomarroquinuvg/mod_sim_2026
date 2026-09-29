@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Métodos Numéricos — Laboratorio Interactivo
+    </title>
+
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header>
+
+    <div class="header-contenido">
+
+        <div>
+
+            <span class="codigo">
+                CC3074
+            </span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Universidad del Valle de Guatemala
+            </p>
+
+        </div>
+
+
+        <div class="header-tema">
+
+            05 · Métodos Numéricos
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
+    <section class="hero">
+
+        <div class="hero-texto">
+
+            <span class="etiqueta">
+                LABORATORIO INTERACTIVO
+            </span>
+
+
+            <h2>
+                Métodos Numéricos
+                <span>
+                    aplicados a Simulación
+                </span>
+            </h2>
+
+
+            <p>
+                Explora cómo una computadora puede aproximar
+                la evolución de un sistema cuando conocemos
+                su ecuación diferencial, pero necesitamos
+                calcular su comportamiento paso a paso.
+            </p>
+
+
+            <div class="ruta-aprendizaje">
+
+                <span>
+                    Ecuación diferencial
+                </span>
+
+                <b>→</b>
+
+                <span>
+                    Método numérico
+                </span>
+
+                <b>→</b>
+
+                <span>
+                    Aproximación
+                </span>
+
+                <b>→</b>
+
+                <span>
+                    Simulación
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="formula">
+
+                <span>
+                    Partimos de
+                </span>
+
+                <strong>
+                    dy/dt = f(t,y)
+                </strong>
+
+            </div>
+
+
+            <div class="flecha">
+                ↓
+            </div>
+
+
+            <div class="formula destacada">
+
+                <span>
+                    Aproximamos
+                </span>
+
+                <strong>
+                    y₀ → y₁ → y₂ → ... → yₙ
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ¿QUÉ APRENDEREMOS?
+         ================================================= -->
+
+    <section class="introduccion">
+
+        <span class="numero">
+            01
+        </span>
+
+
+        <div>
+
+            <span class="mini-etiqueta">
+                ANTES DE COMENZAR
+            </span>
+
+            <h2>
+                ¿Qué vamos a observar?
+            </h2>
+
+            <p>
+                En estos simuladores no queremos solamente
+                obtener un resultado. Queremos observar
+                <strong>cómo se construye la aproximación</strong>,
+                por qué Euler y RK4 producen resultados diferentes
+                y qué ocurre cuando modificamos el tamaño de paso.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONCEPTOS
+         ================================================= -->
+
+    <section class="conceptos">
+
+        <article>
+
+            <div class="concepto-icono">
+                📍
+            </div>
+
+            <div>
+
+                <strong>
+                    Estado actual
+                </strong>
+
+                <p>
+                    El valor conocido del sistema
+                    en un instante determinado.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <div class="concepto-icono">
+                📈
+            </div>
+
+            <div>
+
+                <strong>
+                    Pendiente
+                </strong>
+
+                <p>
+                    Indica cómo está cambiando
+                    el sistema en ese instante.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <div class="concepto-icono">
+                👣
+            </div>
+
+            <div>
+
+                <strong>
+                    Tamaño de paso h
+                </strong>
+
+                <p>
+                    Indica cuánto avanzaremos
+                    antes de calcular el siguiente valor.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <div class="concepto-icono">
+                🎯
+            </div>
+
+            <div>
+
+                <strong>
+                    Error
+                </strong>
+
+                <p>
+                    Diferencia entre una aproximación
+                    y un valor de referencia.
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RUTA DE LABORATORIOS
+         ================================================= -->
+
+    <section class="seccion-laboratorios">
+
+        <div class="titulo-seccion">
+
+            <span>
+                02 · RUTA DE APRENDIZAJE
+            </span>
+
+            <h2>
+                Elige un laboratorio
+            </h2>
+
+            <p>
+                Recomendamos recorrerlos en orden.
+                Cada laboratorio parte de lo aprendido
+                en el anterior.
+            </p>
+
+        </div>
+
+
+
+        <div class="laboratorios">
+
+
+            <!-- =========================================
+                 EULER
+                 ========================================= -->
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-numero">
+                    01
+                </div>
+
+
+                <div class="tarjeta-icono">
+                    📐
+                </div>
+
+
+                <span class="tipo">
+                    FUNDAMENTOS
+                </span>
+
+
+                <h3>
+                    Euler paso a paso
+                </h3>
+
+
+                <p>
+                    Observa cómo Euler utiliza la pendiente
+                    actual para construir el siguiente punto
+                    de una solución aproximada.
+                </p>
+
+
+                <div class="formula-tarjeta">
+
+                    yₙ₊₁ =
+                    yₙ +
+                    h · f(tₙ,yₙ)
+
+                </div>
+
+
+                <div class="aprendizaje">
+
+                    <strong>
+                        Aprenderás:
+                    </strong>
+
+                    <span>
+                        ✓ Qué representa t
+                    </span>
+
+                    <span>
+                        ✓ Qué representa y
+                    </span>
+
+                    <span>
+                        ✓ Qué representa h
+                    </span>
+
+                    <span>
+                        ✓ Cómo se calcula cada paso
+                    </span>
+
+                </div>
+
+
+                <a href="./euler/"
+                   class="boton">
+
+                    Explorar Euler →
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =========================================
+                 EULER VS RK4
+                 ========================================= -->
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-numero">
+                    02
+                </div>
+
+
+                <div class="tarjeta-icono">
+                    🚀
+                </div>
+
+
+                <span class="tipo">
+                    COMPARACIÓN
+                </span>
+
+
+                <h3>
+                    Euler vs. RK4
+                </h3>
+
+
+                <p>
+                    Ejecuta ambos métodos sobre el mismo
+                    problema y compara sus aproximaciones
+                    con la solución de referencia.
+                </p>
+
+
+                <div class="comparacion-mini">
+
+                    <span>
+                        Euler
+                    </span>
+
+                    <b>
+                        VS.
+                    </b>
+
+                    <span>
+                        RK4
+                    </span>
+
+                </div>
+
+
+                <div class="aprendizaje">
+
+                    <strong>
+                        Aprenderás:
+                    </strong>
+
+                    <span>
+                        ✓ Cómo trabaja RK4
+                    </span>
+
+                    <span>
+                        ✓ Qué son k₁, k₂, k₃ y k₄
+                    </span>
+
+                    <span>
+                        ✓ Cómo comparar aproximaciones
+                    </span>
+
+                    <span>
+                        ✓ Cómo interpretar el error
+                    </span>
+
+                </div>
+
+
+                <a href="./euler_vs_rk4/"
+                   class="boton">
+
+                    Comparar métodos →
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =========================================
+                 EXPERIMENTO H
+                 ========================================= -->
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-numero">
+                    03
+                </div>
+
+
+                <div class="tarjeta-icono">
+                    🎮
+                </div>
+
+
+                <span class="tipo">
+                    EXPERIMENTACIÓN
+                </span>
+
+
+                <h3>
+                    Experimenta con h
+                </h3>
+
+
+                <p>
+                    Modifica el tamaño de paso y observa
+                    inmediatamente cómo cambia la aproximación,
+                    el error y la cantidad de cálculos.
+                </p>
+
+
+                <div class="slider-falso">
+
+                    <span>
+                        h pequeño
+                    </span>
+
+                    <div>
+                        <i></i>
+                    </div>
+
+                    <span>
+                        h grande
+                    </span>
+
+                </div>
+
+
+                <div class="aprendizaje">
+
+                    <strong>
+                        Experimentarás con:
+                    </strong>
+
+                    <span>
+                        ✓ Tamaño de paso
+                    </span>
+
+                    <span>
+                        ✓ Número de iteraciones
+                    </span>
+
+                    <span>
+                        ✓ Error numérico
+                    </span>
+
+                    <span>
+                        ✓ Costo computacional
+                    </span>
+
+                </div>
+
+
+                <a href="./experimento_h/"
+                   class="boton">
+
+                    Experimentar →
+
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CASO DE ESTUDIO
+         ================================================= -->
+
+    <section class="caso-estudio">
+
+        <div class="caso-icono">
+
+            ☕
+
+        </div>
+
+
+        <div class="caso-contenido">
+
+            <span>
+                CASO DE ESTUDIO
+            </span>
+
+            <h2>
+                Enfriamiento de Newton
+            </h2>
+
+            <p>
+                Utilizaremos un sistema cuya temperatura cambia
+                con el tiempo. Esto nos permitirá observar cómo
+                una ecuación diferencial describe un fenómeno
+                dinámico y cómo los métodos numéricos aproximan
+                su evolución.
+            </p>
+
+
+            <div class="flujo-caso">
+
+                <div>
+                    ☕
+                    <strong>
+                        Temperatura inicial
+                    </strong>
+                </div>
+
+                <b>→</b>
+
+                <div>
+                    🌡️
+                    <strong>
+                        Cambio de temperatura
+                    </strong>
+                </div>
+
+                <b>→</b>
+
+                <div>
+                    📉
+                    <strong>
+                        Enfriamiento
+                    </strong>
+                </div>
+
+                <b>→</b>
+
+                <div>
+                    💻
+                    <strong>
+                        Simulación
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONEXIÓN CON SIMULACIÓN
+         ================================================= -->
+
+    <section class="conexion">
+
+        <div>
+
+            <span>
+                03 · CONEXIÓN CON EL CURSO
+            </span>
+
+            <h2>
+                ¿Por qué esto es simulación?
+            </h2>
+
+            <p>
+                Un sistema real cambia continuamente.
+                Una computadora necesita representar esa evolución
+                mediante cálculos discretos. Los métodos numéricos
+                permiten avanzar paso a paso y construir una
+                aproximación del comportamiento del sistema.
+            </p>
+
+        </div>
+
+
+        <div class="cadena">
+
+            <span>
+                Sistema real
+            </span>
+
+            <b>→</b>
+
+            <span>
+                Modelo matemático
+            </span>
+
+            <b>→</b>
+
+            <span>
+                Método numérico
+            </span>
+
+            <b>→</b>
+
+            <span>
+                Simulación
+            </span>
+
+            <b>→</b>
+
+            <span>
+                Análisis
+            </span>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <strong>
+        CC3074 — Modelización y Simulación
+    </strong>
+
+    <span>
+        Universidad del Valle de Guatemala · 2026
+    </span>
+
+</footer>
+
+
+</body>
+
+</html>
