@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Flujo Máximo y Costo Mínimo — Laboratorio Interactivo
+    </title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-contenido">
+
+        <div>
+            <span class="codigo">CC3074</span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Laboratorio Interactivo — Redes de Flujo
+            </p>
+        </div>
+
+        <a href="../"
+           class="volver">
+            ← Volver al laboratorio
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- =====================================================
+         INTRODUCCIÓN
+         ===================================================== -->
+
+    <section class="hero">
+
+        <div>
+
+            <span class="etiqueta">
+                OPTIMIZACIÓN EN REDES
+            </span>
+
+            <h2>
+                🚗 Flujo Máximo y Costo Mínimo
+            </h2>
+
+            <p>
+                Una red puede representar carreteras,
+                tuberías, enlaces de comunicación o rutas
+                de transporte. Cada conexión tiene límites
+                que debemos respetar.
+            </p>
+
+        </div>
+
+        <div class="formula-principal">
+            flujo ≤ capacidad
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONCEPTOS
+         ===================================================== -->
+
+    <section class="conceptos">
+
+        <article>
+
+            <span class="simbolo">s</span>
+
+            <div>
+                <strong>Fuente</strong>
+
+                <p>
+                    Nodo donde se origina el flujo.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <span class="simbolo">t</span>
+
+            <div>
+                <strong>Destino</strong>
+
+                <p>
+                    Nodo donde queremos hacer llegar el flujo.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <span class="simbolo">c</span>
+
+            <div>
+                <strong>Capacidad</strong>
+
+                <p>
+                    Máximo flujo permitido en una conexión.
+                </p>
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <span class="simbolo">f</span>
+
+            <div>
+                <strong>Flujo</strong>
+
+                <p>
+                    Cantidad que actualmente utiliza la conexión.
+                </p>
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         SELECTOR
+         ===================================================== -->
+
+    <section class="selector-modo">
+
+        <button id="btnMaximo"
+                class="modo activo">
+
+            🚗 Modo 1
+
+            <small>
+                Flujo Máximo
+            </small>
+
+        </button>
+
+
+        <button id="btnCosto"
+                class="modo">
+
+            💰 Modo 2
+
+            <small>
+                Costo Mínimo
+            </small>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODO 1
+         ===================================================== -->
+
+    <section id="modoMaximo"
+             class="modo-contenido">
+
+        <div class="titulo-modo">
+
+            <span>MODO 1 — CAPACIDAD</span>
+
+            <h2>
+                🚨 Misión: evacuar la ciudad
+            </h2>
+
+            <p>
+                Queremos transportar la mayor cantidad posible
+                de vehículos desde la zona de emergencia S
+                hasta el refugio T.
+            </p>
+
+        </div>
+
+
+        <section class="laboratorio">
+
+            <!-- =============================================
+                 MAPA
+                 ============================================= -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">01</span>
+
+                    <div>
+                        <h3>Red de evacuación</h3>
+
+                        <p>
+                            Cada carretera muestra
+                            flujo actual / capacidad máxima.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="mapa">
+
+                    <svg viewBox="0 0 900 540"
+                         id="redMaximo">
+
+
+                        <!-- CARRETERAS -->
+
+                        <line id="max-SA"
+                              x1="130" y1="270"
+                              x2="350" y2="130"
+                              class="carretera"/>
+
+                        <line id="max-SB"
+                              x1="130" y1="270"
+                              x2="350" y2="410"
+                              class="carretera"/>
+
+                        <line id="max-AB"
+                              x1="350" y1="130"
+                              x2="350" y2="410"
+                              class="carretera"/>
+
+                        <line id="max-AT"
+                              x1="350" y1="130"
+                              x2="740" y2="270"
+                              class="carretera"/>
+
+                        <line id="max-BT"
+                              x1="350" y1="410"
+                              x2="740" y2="270"
+                              class="carretera"/>
+
+
+                        <!-- ETIQUETAS -->
+
+                        <g class="etiqueta-via">
+                            <rect x="205" y="175"
+                                  width="95" height="38"
+                                  rx="8"/>
+
+                            <text id="label-max-SA"
+                                  x="252" y="201">
+                                0 / 4
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via">
+                            <rect x="205" y="330"
+                                  width="95" height="38"
+                                  rx="8"/>
+
+                            <text id="label-max-SB"
+                                  x="252" y="356">
+                                0 / 5
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via">
+                            <rect x="365" y="250"
+                                  width="95" height="38"
+                                  rx="8"/>
+
+                            <text id="label-max-AB"
+                                  x="412" y="276">
+                                0 / 2
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via">
+                            <rect x="510" y="170"
+                                  width="95" height="38"
+                                  rx="8"/>
+
+                            <text id="label-max-AT"
+                                  x="557" y="196">
+                                0 / 3
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via">
+                            <rect x="510" y="335"
+                                  width="95" height="38"
+                                  rx="8"/>
+
+                            <text id="label-max-BT"
+                                  x="557" y="361">
+                                0 / 4
+                            </text>
+                        </g>
+
+
+                        <!-- NODOS -->
+
+                        <g class="nodo fuente">
+                            <circle cx="130"
+                                    cy="270"
+                                    r="60"/>
+
+                            <text x="130"
+                                  y="265"
+                                  class="nodo-letra">
+                                S
+                            </text>
+
+                            <text x="130"
+                                  y="292"
+                                  class="nodo-sub">
+                                EMERGENCIA
+                            </text>
+                        </g>
+
+
+                        <g class="nodo">
+                            <circle cx="350"
+                                    cy="130"
+                                    r="57"/>
+
+                            <text x="350"
+                                  y="140"
+                                  class="nodo-letra">
+                                A
+                            </text>
+                        </g>
+
+
+                        <g class="nodo">
+                            <circle cx="350"
+                                    cy="410"
+                                    r="57"/>
+
+                            <text x="350"
+                                  y="420"
+                                  class="nodo-letra">
+                                B
+                            </text>
+                        </g>
+
+
+                        <g class="nodo destino">
+                            <circle cx="740"
+                                    cy="270"
+                                    r="65"/>
+
+                            <text x="740"
+                                  y="264"
+                                  class="nodo-letra">
+                                T
+                            </text>
+
+                            <text x="740"
+                                  y="292"
+                                  class="nodo-sub">
+                                REFUGIO
+                            </text>
+                        </g>
+
+
+                        <!-- VEHÍCULOS ANIMADOS -->
+
+                        <g id="vehiculosMaximo">
+                        </g>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="leyenda">
+
+                    <div>
+                        <span class="linea normal"></span>
+                        Disponible
+                    </div>
+
+                    <div>
+                        <span class="linea activa"></span>
+                        Ruta utilizada
+                    </div>
+
+                    <div>
+                        <span class="linea saturada"></span>
+                        Saturada
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 PANEL DIDÁCTICO
+                 ============================================= -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">02</span>
+
+                    <div>
+                        <h3>Centro de control</h3>
+
+                        <p>
+                            Analiza una ruta de aumento
+                            a la vez.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="objetivo">
+
+                    <span>OBJETIVO</span>
+
+                    <strong>
+                        Maximizar vehículos evacuados
+                    </strong>
+                </div>
+
+
+                <div class="estadisticas">
+
+                    <div>
+                        <span>Flujo actual</span>
+                        <strong id="flujoActual">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Flujo máximo</span>
+                        <strong id="flujoMeta">?</strong>
+                    </div>
+
+                    <div>
+                        <span>Iteración</span>
+                        <strong id="iteracionMax">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div id="pasoMax"
+                     class="paso-info">
+
+                    <span>LISTO</span>
+
+                    <h3>
+                        La evacuación todavía no ha comenzado
+                    </h3>
+
+                    <p>
+                        Presiona “Siguiente ruta” para buscar
+                        un camino con capacidad disponible.
+                    </p>
+
+                </div>
+
+
+                <div class="formula-box">
+
+                    <span>
+                        Cuello de botella
+                    </span>
+
+                    <strong id="formulaCuello">
+                        min(capacidades disponibles)
+                    </strong>
+
+                </div>
+
+
+                <div class="residual">
+
+                    <h4>
+                        Capacidad residual
+                    </h4>
+
+                    <p>
+                        Es la capacidad que todavía podemos utilizar:
+                    </p>
+
+                    <div class="formula-secundaria">
+                        residual = capacidad − flujo
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <section class="controles">
+
+            <button id="anteriorMax"
+                    class="boton secundario">
+                ← Anterior
+            </button>
+
+            <div class="barra">
+                <div id="progresoMax"></div>
+            </div>
+
+            <button id="siguienteMax"
+                    class="boton principal">
+                Siguiente ruta →
+            </button>
+
+            <button id="automaticoMax"
+                    class="boton principal">
+                ▶ Automático
+            </button>
+
+            <button id="reiniciarMax"
+                    class="boton gris">
+                ↻ Reiniciar
+            </button>
+
+        </section>
+
+
+        <section id="resultadoMax"
+                 class="resultado">
+
+            <span>🚗</span>
+
+            <div>
+                <strong>
+                    Todavía no conocemos el flujo máximo.
+                </strong>
+
+                <p>
+                    Utiliza las rutas disponibles para
+                    transportar vehículos hasta T.
+                </p>
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODO 2 — COSTO MÍNIMO
+         ===================================================== -->
+
+    <section id="modoCosto"
+             class="modo-contenido oculto">
+
+        <div class="titulo-modo">
+
+            <span>MODO 2 — COSTOS</span>
+
+            <h2>
+                📦 Misión: entregar suministros
+            </h2>
+
+            <p>
+                Ahora no basta con poder transportar.
+                Cada carretera tiene un costo por unidad y
+                queremos satisfacer una demanda reduciendo
+                el costo total.
+            </p>
+
+        </div>
+
+
+        <section class="laboratorio">
+
+            <!-- RED -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">01</span>
+
+                    <div>
+                        <h3>Red logística</h3>
+
+                        <p>
+                            Cada carretera muestra
+                            capacidad y costo por unidad.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="mapa">
+
+                    <svg viewBox="0 0 900 540"
+                         id="redCosto">
+
+
+                        <!-- CARRETERAS -->
+
+                        <line id="cost-SA"
+                              x1="130" y1="270"
+                              x2="350" y2="130"
+                              class="carretera"/>
+
+                        <line id="cost-SB"
+                              x1="130" y1="270"
+                              x2="350" y2="410"
+                              class="carretera"/>
+
+                        <line id="cost-AB"
+                              x1="350" y1="130"
+                              x2="350" y2="410"
+                              class="carretera"/>
+
+                        <line id="cost-AT"
+                              x1="350" y1="130"
+                              x2="740" y2="270"
+                              class="carretera"/>
+
+                        <line id="cost-BT"
+                              x1="350" y1="410"
+                              x2="740" y2="270"
+                              class="carretera"/>
+
+
+                        <!-- ETIQUETAS -->
+
+                        <g class="etiqueta-via costo-via">
+                            <rect x="180" y="160"
+                                  width="145" height="50"
+                                  rx="8"/>
+
+                            <text x="252" y="181">
+                                Cap. 4
+                            </text>
+
+                            <text x="252" y="201">
+                                Costo Q2
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via costo-via">
+                            <rect x="180" y="330"
+                                  width="145" height="50"
+                                  rx="8"/>
+
+                            <text x="252" y="351">
+                                Cap. 3
+                            </text>
+
+                            <text x="252" y="371">
+                                Costo Q1
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via costo-via">
+                            <rect x="365" y="245"
+                                  width="145" height="50"
+                                  rx="8"/>
+
+                            <text x="437" y="266">
+                                Cap. 2
+                            </text>
+
+                            <text x="437" y="286">
+                                Costo Q1
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via costo-via">
+                            <rect x="500" y="160"
+                                  width="145" height="50"
+                                  rx="8"/>
+
+                            <text x="572" y="181">
+                                Cap. 3
+                            </text>
+
+                            <text x="572" y="201">
+                                Costo Q2
+                            </text>
+                        </g>
+
+
+                        <g class="etiqueta-via costo-via">
+                            <rect x="500" y="330"
+                                  width="145" height="50"
+                                  rx="8"/>
+
+                            <text x="572" y="351">
+                                Cap. 3
+                            </text>
+
+                            <text x="572" y="371">
+                                Costo Q3
+                            </text>
+                        </g>
+
+
+                        <!-- NODOS -->
+
+                        <g class="nodo fuente">
+                            <circle cx="130"
+                                    cy="270"
+                                    r="60"/>
+
+                            <text x="130"
+                                  y="265"
+                                  class="nodo-letra">
+                                S
+                            </text>
+
+                            <text x="130"
+                                  y="292"
+                                  class="nodo-sub">
+                                BODEGA
+                            </text>
+                        </g>
+
+
+                        <g class="nodo">
+                            <circle cx="350"
+                                    cy="130"
+                                    r="57"/>
+
+                            <text x="350"
+                                  y="140"
+                                  class="nodo-letra">
+                                A
+                            </text>
+                        </g>
+
+
+                        <g class="nodo">
+                            <circle cx="350"
+                                    cy="410"
+                                    r="57"/>
+
+                            <text x="350"
+                                  y="420"
+                                  class="nodo-letra">
+                                B
+                            </text>
+                        </g>
+
+
+                        <g class="nodo destino">
+                            <circle cx="740"
+                                    cy="270"
+                                    r="65"/>
+
+                            <text x="740"
+                                  y="264"
+                                  class="nodo-letra">
+                                T
+                            </text>
+
+                            <text x="740"
+                                  y="292"
+                                  class="nodo-sub">
+                                DESTINO
+                            </text>
+                        </g>
+
+
+                        <g id="vehiculosCosto">
+                        </g>
+
+                    </svg>
+
+                </div>
+
+            </article>
+
+
+            <!-- CONTROL -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">02</span>
+
+                    <div>
+                        <h3>Planificador logístico</h3>
+
+                        <p>
+                            Selecciona rutas para enviar
+                            las unidades requeridas.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="demanda">
+
+                    <span>
+                        DEMANDA
+                    </span>
+
+                    <strong>
+                        Transportar 5 unidades
+                    </strong>
+
+                </div>
+
+
+                <div class="estadisticas">
+
+                    <div>
+                        <span>Enviado</span>
+                        <strong id="enviadoCosto">0 / 5</strong>
+                    </div>
+
+                    <div>
+                        <span>Costo total</span>
+                        <strong id="totalCosto">Q0</strong>
+                    </div>
+
+                    <div>
+                        <span>Restante</span>
+                        <strong id="restanteCosto">5</strong>
+                    </div>
+
+                </div>
+
+
+                <h4 class="titulo-rutas">
+                    Rutas disponibles
+                </h4>
+
+
+                <button class="ruta-btn"
+                        data-ruta="SAT">
+
+                    <div>
+                        <strong>
+                            S → A → T
+                        </strong>
+
+                        <span>
+                            Capacidad de ruta: 3
+                        </span>
+                    </div>
+
+                    <div class="precio">
+                        Q4
+                        <small>por unidad</small>
+                    </div>
+
+                </button>
+
+
+                <button class="ruta-btn"
+                        data-ruta="SBT">
+
+                    <div>
+                        <strong>
+                            S → B → T
+                        </strong>
+
+                        <span>
+                            Capacidad de ruta: 3
+                        </span>
+                    </div>
+
+                    <div class="precio">
+                        Q4
+                        <small>por unidad</small>
+                    </div>
+
+                </button>
+
+
+                <button class="ruta-btn"
+                        data-ruta="SABT">
+
+                    <div>
+                        <strong>
+                            S → A → B → T
+                        </strong>
+
+                        <span>
+                            Capacidad de ruta: 2
+                        </span>
+                    </div>
+
+                    <div class="precio">
+                        Q6
+                        <small>por unidad</small>
+                    </div>
+
+                </button>
+
+
+                <div class="selector-cantidad">
+
+                    <label for="cantidadEnviar">
+                        Unidades a enviar:
+                    </label>
+
+                    <select id="cantidadEnviar">
+                        <option value="1">1 unidad</option>
+                        <option value="2">2 unidades</option>
+                        <option value="3">3 unidades</option>
+                    </select>
+
+                </div>
+
+
+                <button id="enviarCosto"
+                        class="boton principal ancho"
+                        disabled>
+
+                    🚚 Enviar suministros
+
+                </button>
+
+
+                <button id="optimoCosto"
+                        class="boton secundario ancho">
+
+                    💡 Mostrar solución de menor costo
+
+                </button>
+
+
+                <button id="reiniciarCosto"
+                        class="boton gris ancho">
+
+                    ↻ Reiniciar misión
+
+                </button>
+
+            </article>
+
+        </section>
+
+
+        <section id="detalleCosto"
+                 class="detalle-costo">
+
+            <span>💰</span>
+
+            <div>
+                <strong>
+                    Selecciona una ruta.
+                </strong>
+
+                <p>
+                    Observa su capacidad y costo antes
+                    de enviar suministros.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="formula-costo">
+
+            <div>
+
+                <span>
+                    COSTO TOTAL
+                </span>
+
+                <strong>
+                    Σ (flujo × costo por unidad)
+                </strong>
+
+            </div>
+
+
+            <p>
+                El objetivo no es únicamente encontrar una
+                ruta posible, sino distribuir el flujo
+                respetando capacidades y reduciendo el costo.
+            </p>
+
+        </section>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONEXIÓN
+         ===================================================== -->
+
+    <section class="comparacion-final">
+
+        <div>
+            <span>🚗</span>
+
+            <strong>
+                Flujo Máximo
+            </strong>
+
+            <p>
+                ¿Cuánto puedo transportar?
+            </p>
+        </div>
+
+
+        <div class="versus">
+            VS.
+        </div>
+
+
+        <div>
+            <span>💰</span>
+
+            <strong>
+                Costo Mínimo
+            </strong>
+
+            <p>
+                ¿Cómo puedo transportarlo
+                con menor costo?
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    CC3074 — Modelización y Simulación ·
+    Universidad del Valle de Guatemala
+
+</footer>
+
+
+<script src="./app.js"></script>
+
+</body>
+
+</html>
