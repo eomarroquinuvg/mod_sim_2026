@@ -1,0 +1,2063 @@
+:root {
+
+    --verde: #008D36;
+    --verde-oscuro: #006629;
+    --verde-claro: #e8f5ed;
+
+    --blanco: #ffffff;
+    --fondo: #f4f7f5;
+
+    --texto: #202722;
+    --gris: #667085;
+    --borde: #dce4df;
+
+    --amarillo: #f4b400;
+    --amarillo-claro: #fff6d3;
+
+    --azul: #287fb8;
+    --azul-claro: #e6f3fa;
+
+    --rojo: #cf4848;
+    --negro: #253029;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--fondo);
+
+    color:
+        var(--texto);
+
+}
+
+
+main {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    padding:
+        32px;
+
+}
+
+
+/* ==========================
+   HEADER
+   ========================== */
+
+header {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color:
+        white;
+
+    padding:
+        26px 35px;
+
+}
+
+
+.header-contenido {
+
+    max-width:
+        1400px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+}
+
+
+.codigo {
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+header h1 {
+
+    margin:
+        4px 0;
+
+}
+
+
+header p {
+
+    margin:
+        0;
+
+}
+
+
+.volver {
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        8px;
+
+}
+
+
+/* ==========================
+   HERO
+   ========================== */
+
+.hero {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        25px;
+
+}
+
+
+.etiqueta {
+
+    color:
+        var(--verde);
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.hero h2 {
+
+    margin:
+        7px 0;
+
+    font-size:
+        35px;
+
+}
+
+
+.hero p {
+
+    color:
+        var(--gris);
+
+    max-width:
+        760px;
+
+    line-height:
+        1.55;
+
+}
+
+
+.formula-principal {
+
+    background:
+        var(--verde);
+
+    color:
+        white;
+
+    font-size:
+        25px;
+
+    font-weight:
+        bold;
+
+    padding:
+        20px 27px;
+
+    border-radius:
+        12px;
+
+    white-space:
+        nowrap;
+
+}
+
+
+/* ==========================
+   CONCEPTOS
+   ========================== */
+
+.conceptos-principales {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        15px;
+
+    margin:
+        25px 0;
+
+}
+
+
+.conceptos-principales article {
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        12px;
+
+    padding:
+        15px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+}
+
+
+.variable {
+
+    min-width:
+        62px;
+
+    height:
+        62px;
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    border-radius:
+        10px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-weight:
+        bold;
+
+    font-size:
+        18px;
+
+}
+
+
+.conceptos-principales p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size:
+        13px;
+
+}
+
+
+/* ==========================
+   SELECTOR
+   ========================== */
+
+.selector-modo {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    margin:
+        30px 0;
+
+}
+
+
+.modo {
+
+    min-width:
+        230px;
+
+    padding:
+        13px 18px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        10px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+}
+
+
+.modo small {
+
+    display:
+        block;
+
+    color:
+        var(--gris);
+
+    margin-top:
+        4px;
+
+}
+
+
+.modo.activo {
+
+    background:
+        var(--verde-claro);
+
+    border:
+        2px solid
+        var(--verde);
+
+    color:
+        var(--verde-oscuro);
+
+}
+
+
+/* ==========================
+   MODO
+   ========================== */
+
+.oculto {
+
+    display:
+        none !important;
+
+}
+
+
+.titulo-modo {
+
+    text-align:
+        center;
+
+    margin:
+        30px 0 22px;
+
+}
+
+
+.titulo-modo > span {
+
+    color:
+        var(--verde);
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.titulo-modo h2 {
+
+    margin:
+        6px 0;
+
+}
+
+
+.titulo-modo p {
+
+    color:
+        var(--gris);
+
+    margin:
+        0;
+
+}
+
+
+/* ==========================
+   PANELES
+   ========================== */
+
+.laboratorio,
+.mision {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.4fr .9fr;
+
+    gap:
+        22px;
+
+}
+
+
+.panel {
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        15px;
+
+    padding:
+        21px;
+
+}
+
+
+.panel-header {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    align-items:
+        center;
+
+}
+
+
+.numero {
+
+    min-width:
+        42px;
+
+    height:
+        42px;
+
+    background:
+        var(--verde);
+
+    color:
+        white;
+
+    border-radius:
+        10px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-weight:
+        bold;
+
+}
+
+
+.panel-header h3 {
+
+    margin:
+        0;
+
+}
+
+
+.panel-header p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size:
+        13px;
+
+}
+
+
+/* ==========================
+   GRAFO
+   ========================== */
+
+.grafo-contenedor {
+
+    margin-top:
+        10px;
+
+}
+
+
+#grafo {
+
+    width:
+        100%;
+
+    display:
+        block;
+
+}
+
+
+.arista {
+
+    stroke:
+        #aeb7b1;
+
+    stroke-width:
+        6;
+
+    stroke-linecap:
+        round;
+
+    transition:
+        .4s;
+
+}
+
+
+.arista.activa {
+
+    stroke:
+        var(--amarillo);
+
+    stroke-width:
+        9;
+
+}
+
+
+.arista.final {
+
+    stroke:
+        var(--verde);
+
+    stroke-width:
+        10;
+
+}
+
+
+.costo rect {
+
+    fill:
+        white;
+
+    stroke:
+        var(--borde);
+
+}
+
+
+.costo text {
+
+    text-anchor:
+        middle;
+
+    fill:
+        var(--texto);
+
+    font-size:
+        17px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.nodo circle {
+
+    fill:
+        white;
+
+    stroke:
+        #7e8982;
+
+    stroke-width:
+        5;
+
+    transition:
+        .3s;
+
+}
+
+
+.nodo .letra {
+
+    text-anchor:
+        middle;
+
+    font-size:
+        25px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.heuristica {
+
+    text-anchor:
+        middle;
+
+    fill:
+        var(--gris);
+
+    font-weight:
+        bold;
+
+}
+
+
+.nodo.actual circle {
+
+    fill:
+        var(--amarillo);
+
+    stroke:
+        #bd8a00;
+
+}
+
+
+.nodo.explorado circle {
+
+    fill:
+        var(--azul-claro);
+
+    stroke:
+        var(--azul);
+
+}
+
+
+.nodo.final circle {
+
+    fill:
+        var(--verde);
+
+    stroke:
+        var(--verde-oscuro);
+
+}
+
+
+.nodo.final .letra {
+
+    fill:
+        white;
+
+}
+
+
+.nodo.meta circle {
+
+    stroke:
+        var(--verde);
+
+    stroke-width:
+        7;
+
+}
+
+
+/* LEYENDA */
+
+.leyenda {
+
+    border-top:
+        1px solid
+        var(--borde);
+
+    padding-top:
+        12px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        15px;
+
+    font-size:
+        12px;
+
+}
+
+
+.leyenda div {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+}
+
+
+.leyenda-punto {
+
+    width:
+        15px;
+
+    height:
+        15px;
+
+    border-radius:
+        50%;
+
+}
+
+
+.leyenda-punto.normal {
+
+    background:
+        white;
+
+    border:
+        2px solid #7e8982;
+
+}
+
+
+.leyenda-punto.actual {
+
+    background:
+        var(--amarillo);
+
+}
+
+
+.leyenda-punto.explorado {
+
+    background:
+        var(--azul);
+
+}
+
+
+.leyenda-punto.final {
+
+    background:
+        var(--verde);
+
+}
+
+
+/* ==========================
+   PANEL A*
+   ========================== */
+
+.paso {
+
+    display:
+        inline-block;
+
+    margin-top:
+        23px;
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    padding:
+        7px 11px;
+
+    border-radius:
+        20px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.titulo-paso {
+
+    margin-bottom:
+        6px;
+
+}
+
+
+.descripcion {
+
+    color:
+        var(--gris);
+
+    line-height:
+        1.5;
+
+}
+
+
+.calculos {
+
+    margin:
+        18px 0;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        9px;
+
+    overflow:
+        hidden;
+
+}
+
+
+.fila-calculo {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        11px 13px;
+
+    border-bottom:
+        1px solid
+        var(--borde);
+
+}
+
+
+.fila-calculo:last-child {
+
+    border-bottom:
+        none;
+
+}
+
+
+.fila-calculo.destacado {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+}
+
+
+.open-titulo {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        7px;
+
+}
+
+
+.open-titulo span {
+
+    color:
+        var(--gris);
+
+    font-size:
+        12px;
+
+}
+
+
+.open-item {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    background:
+        #f7f9f8;
+
+    border-left:
+        5px solid #aab3ad;
+
+    padding:
+        10px 12px;
+
+    margin-bottom:
+        6px;
+
+    border-radius:
+        5px;
+
+}
+
+
+.open-item.primero {
+
+    background:
+        var(--verde-claro);
+
+    border-color:
+        var(--verde);
+
+    color:
+        var(--verde-oscuro);
+
+    font-weight:
+        bold;
+
+}
+
+
+.decision {
+
+    margin-top:
+        18px;
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    background:
+        var(--amarillo-claro);
+
+    border:
+        1px solid #edd57a;
+
+    border-radius:
+        9px;
+
+    padding:
+        14px;
+
+}
+
+
+.decision p {
+
+    margin:
+        4px 0 0;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* ==========================
+   CONTROLES
+   ========================== */
+
+.controles {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    margin:
+        22px 0;
+
+}
+
+
+.boton {
+
+    border:
+        none;
+
+    padding:
+        12px 18px;
+
+    border-radius:
+        8px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+}
+
+
+.boton.principal {
+
+    background:
+        var(--verde);
+
+    color:
+        white;
+
+}
+
+
+.boton.secundario {
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+}
+
+
+.boton.gris {
+
+    background:
+        #e7ebe8;
+
+}
+
+
+.boton:disabled {
+
+    opacity:
+        .35;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+.barra {
+
+    flex:
+        1;
+
+    height:
+        9px;
+
+    background:
+        #dce3de;
+
+    border-radius:
+        20px;
+
+    overflow:
+        hidden;
+
+}
+
+
+#progresoA {
+
+    height:
+        100%;
+
+    width:
+        0%;
+
+    background:
+        var(--verde);
+
+    transition:
+        .4s;
+
+}
+
+
+.resultado-algoritmo {
+
+    background:
+        white;
+
+    border-left:
+        6px solid
+        var(--verde);
+
+    padding:
+        16px 20px;
+
+    border-radius:
+        9px;
+
+}
+
+
+/* ==========================
+   CIUDAD
+   ========================== */
+
+.leyenda-ciudad {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        13px;
+
+    margin:
+        18px 0;
+
+    font-size:
+        12px;
+
+}
+
+
+.leyenda-ciudad div {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+}
+
+
+.mini {
+
+    width:
+        17px;
+
+    height:
+        17px;
+
+    border-radius:
+        4px;
+
+}
+
+
+.mini.inicio {
+
+    background:
+        #ffd54f;
+
+}
+
+
+.mini.destino {
+
+    background:
+        var(--verde);
+
+}
+
+
+.mini.obstaculo {
+
+    background:
+        #37423b;
+
+}
+
+
+.mini.explorada {
+
+    background:
+        #a9d7ed;
+
+}
+
+
+.mini.ruta {
+
+    background:
+        #f3b51b;
+
+}
+
+
+/* GRID */
+
+.grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(10,1fr);
+
+    gap:
+        4px;
+
+    background:
+        #dfe5e1;
+
+    padding:
+        5px;
+
+    border-radius:
+        10px;
+
+}
+
+
+.celda {
+
+    aspect-ratio:
+        1 / 1;
+
+    background:
+        white;
+
+    border:
+        1px solid #d4ddd7;
+
+    border-radius:
+        5px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        20px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+
+}
+
+
+.celda:hover {
+
+    transform:
+        scale(.95);
+
+}
+
+
+.celda.inicio {
+
+    background:
+        #ffe98e;
+
+}
+
+
+.celda.destino {
+
+    background:
+        #b8e1c7;
+
+}
+
+
+.celda.obstaculo {
+
+    background:
+        #39443d;
+
+}
+
+
+.celda.explorada {
+
+    background:
+        #cce9f5;
+
+}
+
+
+.celda.actual {
+
+    background:
+        #78c6e5;
+
+    box-shadow:
+        inset 0 0 0 3px
+        var(--azul);
+
+}
+
+
+.celda.ruta {
+
+    background:
+        #ffd86a;
+
+    box-shadow:
+        inset 0 0 0 3px
+        #e6a800;
+
+}
+
+
+.controles-grid {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+
+    margin-top:
+        17px;
+
+}
+
+
+/* ==========================
+   ROBOT PANEL
+   ========================== */
+
+.mision-card {
+
+    margin-top:
+        20px;
+
+    background:
+        var(--verde-claro);
+
+    border-left:
+        5px solid
+        var(--verde);
+
+    padding:
+        15px;
+
+    border-radius:
+        8px;
+
+}
+
+
+.mision-card span {
+
+    color:
+        var(--verde-oscuro);
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.mision-card strong {
+
+    display:
+        block;
+
+    font-size:
+        20px;
+
+    margin-top:
+        5px;
+
+}
+
+
+.mision-card p {
+
+    color:
+        var(--gris);
+
+    margin-bottom:
+        0;
+
+}
+
+
+.estadisticas {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        8px;
+
+    margin:
+        16px 0;
+
+}
+
+
+.estadisticas div {
+
+    background:
+        #f6f8f7;
+
+    padding:
+        11px;
+
+    border-radius:
+        8px;
+
+}
+
+
+.estadisticas span {
+
+    display:
+        block;
+
+    color:
+        var(--gris);
+
+    font-size:
+        10px;
+
+}
+
+
+.estadisticas strong {
+
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+}
+
+
+.formula-robot {
+
+    background:
+        var(--verde);
+
+    color:
+        white;
+
+    padding:
+        15px;
+
+    border-radius:
+        9px;
+
+    text-align:
+        center;
+
+}
+
+
+.formula-robot span,
+.formula-robot strong {
+
+    display:
+        block;
+
+}
+
+
+.formula-robot strong {
+
+    margin-top:
+        5px;
+
+    font-size:
+        20px;
+
+}
+
+
+.detalle-robot {
+
+    margin:
+        17px 0;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        9px;
+
+    padding:
+        14px;
+
+}
+
+
+.detalle-robot h4 {
+
+    margin:
+        0 0 8px;
+
+}
+
+
+#detalleCelda {
+
+    color:
+        var(--gris);
+
+    line-height:
+        1.6;
+
+}
+
+
+.explicacion-heuristica {
+
+    background:
+        #f7f9f8;
+
+    padding:
+        14px;
+
+    border-radius:
+        9px;
+
+}
+
+
+.explicacion-heuristica p {
+
+    color:
+        var(--gris);
+
+    line-height:
+        1.45;
+
+}
+
+
+.formula-secundaria {
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    padding:
+        11px;
+
+    border-radius:
+        7px;
+
+    text-align:
+        center;
+
+    font-weight:
+        bold;
+
+}
+
+
+/* MENSAJE */
+
+.mensaje-robot {
+
+    margin-top:
+        20px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-left:
+        6px solid
+        var(--verde);
+
+    border-radius:
+        10px;
+
+    padding:
+        17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+}
+
+
+.mensaje-robot > span {
+
+    font-size:
+        32px;
+
+}
+
+
+.mensaje-robot p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+}
+
+
+.mensaje-robot.error {
+
+    border-left-color:
+        var(--rojo);
+
+}
+
+
+.aplicacion-real {
+
+    margin-top:
+        20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color:
+        white;
+
+    border-radius:
+        12px;
+
+    padding:
+        21px;
+
+    display:
+        flex;
+
+    gap:
+        18px;
+
+    align-items:
+        center;
+
+}
+
+
+.aplicacion-icono {
+
+    font-size:
+        42px;
+
+}
+
+
+.aplicacion-real span {
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.aplicacion-real h3 {
+
+    margin:
+        5px 0;
+
+}
+
+
+.aplicacion-real p {
+
+    margin:
+        0;
+
+    line-height:
+        1.5;
+
+    opacity:
+        .92;
+
+}
+
+
+/* ==========================
+   RESUMEN
+   ========================== */
+
+.resumen {
+
+    margin-top:
+        30px;
+
+    background:
+        white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-left:
+        6px solid
+        var(--verde);
+
+    border-radius:
+        10px;
+
+    padding:
+        18px 22px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+}
+
+
+.resumen p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+}
+
+
+.cadena {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    padding:
+        12px 18px;
+
+    border-radius:
+        8px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.cadena span {
+
+    margin:
+        0 8px;
+
+}
+
+
+/* ==========================
+   FOOTER
+   ========================== */
+
+footer {
+
+    background:
+        #202923;
+
+    color:
+        #dce4df;
+
+    text-align:
+        center;
+
+    padding:
+        20px;
+
+    font-size:
+        13px;
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+   ========================== */
+
+@media(max-width:950px) {
+
+    .laboratorio,
+    .mision {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .conceptos-principales {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .hero {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .estadisticas {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    main {
+
+        padding:
+            20px 10px;
+
+    }
+
+
+    .header-contenido {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            15px;
+
+    }
+
+
+    .selector-modo {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .modo {
+
+        width:
+            100%;
+
+    }
+
+
+    .grid {
+
+        gap:
+            2px;
+
+    }
+
+
+    .celda {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .controles {
+
+        flex-wrap:
+            wrap;
+
+    }
+
+
+    .barra {
+
+        flex-basis:
+            100%;
+
+        order:
+            5;
+
+    }
+
+
+    .resumen {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            15px;
+
+    }
+
+}
