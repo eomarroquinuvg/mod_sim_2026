@@ -1,0 +1,1233 @@
+:root {
+
+    --verde: #008D36;
+    --verde-oscuro: #006629;
+    --verde-claro: #e8f5ed;
+
+    --blanco: #ffffff;
+    --fondo: #f4f7f5;
+
+    --texto: #202722;
+    --gris: #667085;
+    --borde: #dce4df;
+
+    --amarillo: #f4b400;
+    --azul: #287fb8;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--fondo);
+
+    color:
+        var(--texto);
+}
+
+
+main {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 35px;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+header {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color: white;
+
+    padding: 27px 35px;
+}
+
+
+.header-contenido {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+}
+
+
+.codigo {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+header h1 {
+
+    margin:
+        5px 0;
+
+    font-size: 25px;
+}
+
+
+header p {
+
+    margin: 0;
+
+    opacity: .9;
+}
+
+
+.header-tema {
+
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
+    background:
+        rgba(255,255,255,.10);
+
+    padding:
+        11px 17px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+
+    min-height: 380px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+    padding:
+        40px 0;
+}
+
+
+.etiqueta {
+
+    color:
+        var(--verde);
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.7px;
+}
+
+
+.hero h2 {
+
+    margin:
+        10px 0 15px;
+
+    font-size: 46px;
+
+    line-height: 1.05;
+}
+
+
+.hero h2 span {
+
+    display: block;
+
+    color:
+        var(--verde);
+
+    font-size: 32px;
+}
+
+
+.hero p {
+
+    max-width: 750px;
+
+    color:
+        var(--gris);
+
+    font-size: 17px;
+
+    line-height: 1.65;
+}
+
+
+.ruta-aprendizaje {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.ruta-aprendizaje span {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    padding:
+        9px 12px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.ruta-aprendizaje b {
+
+    color:
+        var(--verde);
+}
+
+
+/* VISUAL HERO */
+
+.hero-visual {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.formula {
+
+    width: 100%;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 13px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.05);
+}
+
+
+.formula span {
+
+    display: block;
+
+    color:
+        var(--gris);
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+
+.formula strong {
+
+    font-size: 25px;
+}
+
+
+.formula.destacada {
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    border-color:
+        var(--verde);
+}
+
+
+.formula.destacada span {
+
+    color:
+        rgba(255,255,255,.8);
+}
+
+
+.flecha {
+
+    color:
+        var(--verde);
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   INTRODUCCIÓN
+   ===================================================== */
+
+.introduccion {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-left:
+        6px solid
+        var(--verde);
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: flex-start;
+}
+
+
+.numero {
+
+    min-width: 48px;
+
+    height: 48px;
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.mini-etiqueta {
+
+    color:
+        var(--verde);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.introduccion h2 {
+
+    margin:
+        5px 0 7px;
+}
+
+
+.introduccion p {
+
+    margin: 0;
+
+    color:
+        var(--gris);
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   CONCEPTOS
+   ===================================================== */
+
+.conceptos {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 13px;
+
+    margin:
+        20px 0 45px;
+}
+
+
+.conceptos article {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 11px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.concepto-icono {
+
+    min-width: 50px;
+
+    height: 50px;
+
+    background:
+        var(--verde-claro);
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+}
+
+
+.conceptos p {
+
+    margin:
+        4px 0 0;
+
+    color:
+        var(--gris);
+
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+
+/* =====================================================
+   LABORATORIOS
+   ===================================================== */
+
+.seccion-laboratorios {
+
+    margin-top: 40px;
+}
+
+
+.titulo-seccion {
+
+    text-align: center;
+
+    max-width: 700px;
+
+    margin:
+        0 auto 25px;
+}
+
+
+.titulo-seccion > span {
+
+    color:
+        var(--verde);
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.titulo-seccion h2 {
+
+    margin:
+        7px 0;
+
+    font-size: 31px;
+}
+
+
+.titulo-seccion p {
+
+    color:
+        var(--gris);
+
+    line-height: 1.5;
+}
+
+
+.laboratorios {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+}
+
+
+.tarjeta {
+
+    position: relative;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 15px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+
+.tarjeta:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--verde);
+
+    box-shadow:
+        0 14px 35px
+        rgba(0,0,0,.08);
+}
+
+
+.tarjeta-numero {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 18px;
+
+    color:
+        #b8c0bb;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.tarjeta-icono {
+
+    width: 60px;
+
+    height: 60px;
+
+    background:
+        var(--verde-claro);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+.tipo {
+
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.4px;
+}
+
+
+.tarjeta h3 {
+
+    margin:
+        6px 0 8px;
+
+    font-size: 22px;
+}
+
+
+.tarjeta > p {
+
+    color:
+        var(--gris);
+
+    line-height: 1.55;
+
+    font-size: 14px;
+
+    min-height: 65px;
+}
+
+
+.formula-tarjeta {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    padding: 13px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    margin:
+        8px 0 15px;
+}
+
+
+.comparacion-mini {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin:
+        8px 0 15px;
+}
+
+
+.comparacion-mini span {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+.comparacion-mini b {
+
+    color:
+        var(--gris);
+
+    font-size: 10px;
+}
+
+
+/* SLIDER VISUAL */
+
+.slider-falso {
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin:
+        16px 0 20px;
+
+    font-size: 9px;
+
+    color:
+        var(--gris);
+}
+
+
+.slider-falso > div {
+
+    height: 7px;
+
+    background:
+        #dce4df;
+
+    border-radius: 10px;
+
+    position: relative;
+}
+
+
+.slider-falso i {
+
+    position: absolute;
+
+    left: 40%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background:
+        var(--verde);
+}
+
+
+/* APRENDIZAJE */
+
+.aprendizaje {
+
+    border-top:
+        1px solid
+        var(--borde);
+
+    padding-top: 14px;
+
+    margin-top: auto;
+
+    margin-bottom: 18px;
+}
+
+
+.aprendizaje strong {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+}
+
+
+.aprendizaje span {
+
+    display: block;
+
+    color:
+        var(--gris);
+
+    font-size: 11px;
+
+    margin:
+        5px 0;
+}
+
+
+.boton {
+
+    display: block;
+
+    background:
+        var(--verde);
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    padding:
+        12px 15px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition:
+        background .2s,
+        transform .2s;
+}
+
+
+.boton:hover {
+
+    background:
+        var(--verde-oscuro);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   CASO
+   ===================================================== */
+
+.caso-estudio {
+
+    margin-top: 45px;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-oscuro),
+            var(--verde)
+        );
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    gap: 25px;
+
+    align-items: center;
+}
+
+
+.caso-icono {
+
+    width: 100px;
+
+    height: 100px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 52px;
+}
+
+
+.caso-contenido > span {
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.caso-contenido h2 {
+
+    margin:
+        5px 0 8px;
+}
+
+
+.caso-contenido > p {
+
+    max-width: 850px;
+
+    margin:
+        0 0 20px;
+
+    line-height: 1.55;
+
+    opacity: .92;
+}
+
+
+.flujo-caso {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.flujo-caso div {
+
+    background:
+        rgba(255,255,255,.13);
+
+    padding:
+        10px 13px;
+
+    border-radius: 8px;
+}
+
+
+.flujo-caso strong {
+
+    margin-left: 5px;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   CONEXIÓN
+   ===================================================== */
+
+.conexion {
+
+    margin-top: 30px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius: 13px;
+
+    padding: 25px;
+}
+
+
+.conexion > div:first-child > span {
+
+    color:
+        var(--verde);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.conexion h2 {
+
+    margin:
+        6px 0;
+}
+
+
+.conexion p {
+
+    color:
+        var(--gris);
+
+    line-height: 1.55;
+
+    max-width: 900px;
+}
+
+
+.cadena {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        var(--borde);
+}
+
+
+.cadena span {
+
+    background:
+        var(--verde-claro);
+
+    color:
+        var(--verde-oscuro);
+
+    padding:
+        10px 13px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.cadena b {
+
+    color:
+        var(--verde);
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    background: #202923;
+
+    color: #dce4df;
+
+    text-align: center;
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    font-size: 13px;
+}
+
+
+footer span {
+
+    color: #aeb8b1;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media(max-width:1000px) {
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .hero-visual {
+
+        max-width: 600px;
+    }
+
+
+    .laboratorios {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .conceptos {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    main {
+
+        padding:
+            20px 12px;
+    }
+
+
+    .header-contenido {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap: 15px;
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            25px 0;
+    }
+
+
+    .hero h2 {
+
+        font-size: 36px;
+    }
+
+
+    .hero h2 span {
+
+        font-size: 25px;
+    }
+
+
+    .conceptos {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .caso-estudio {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .flujo-caso {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .flujo-caso b {
+
+        text-align: center;
+
+        transform:
+            rotate(90deg);
+    }
+
+
+    .cadena {
+
+        flex-direction:
+            column;
+    }
+
+
+    .cadena b {
+
+        transform:
+            rotate(90deg);
+    }
+
+}
