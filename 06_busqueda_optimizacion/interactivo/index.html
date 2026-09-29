@@ -1,352 +1,534 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A* - Laboratorio Interactivo</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Laboratorio Interactivo — Modelización y Simulación
+    </title>
 
     <link rel="stylesheet" href="./style.css">
 </head>
 
+
 <body>
 
+<!-- =====================================================
+     ENCABEZADO
+     ===================================================== -->
+
 <header class="encabezado">
-    <div>
-        <span class="curso">CC3074</span>
-        <h1>Modelización y Simulación</h1>
-        <p>Laboratorio Interactivo — Búsqueda y Optimización</p>
+
+    <div class="encabezado-contenido">
+
+        <div>
+            <span class="codigo-curso">
+                CC3074
+            </span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Universidad del Valle de Guatemala
+            </p>
+        </div>
+
+        <div class="badge">
+            Laboratorio Interactivo
+        </div>
+
     </div>
+
 </header>
+
 
 <main>
 
-    <section class="titulo-tema">
-        <div>
-            <span class="etiqueta">ALGORITMO DE BÚSQUEDA</span>
-            <h2>A* (A-estrella)</h2>
+
+    <!-- =================================================
+         PRESENTACIÓN
+         ================================================= -->
+
+    <section class="hero">
+
+        <span class="etiqueta">
+            BÚSQUEDA Y OPTIMIZACIÓN
+        </span>
+
+        <h2>
+            Aprende explorando,
+            experimentando y simulando.
+        </h2>
+
+        <p>
+            Este laboratorio permite visualizar de forma interactiva
+            los algoritmos estudiados en clase y relacionarlos con
+            situaciones aplicadas.
+        </p>
+
+
+        <div class="ruta-aprendizaje">
+
+            <div>
+                <span>1</span>
+                <strong>Observa</strong>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+            <div>
+                <span>2</span>
+                <strong>Experimenta</strong>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+            <div>
+                <span>3</span>
+                <strong>Comprende</strong>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+            <div>
+                <span>4</span>
+                <strong>Aplica</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SIMULADORES
+         ================================================= -->
+
+    <section class="seccion">
+
+        <div class="titulo-seccion">
+
+            <span>LABORATORIOS</span>
+
+            <h2>
+                Selecciona un algoritmo
+            </h2>
+
             <p>
-                Observa paso a paso cómo A* selecciona un camino
-                utilizando el costo recorrido y una heurística.
-            </p>
-        </div>
-
-        <div class="formula-principal">
-            f(n) = g(n) + h(n)
-        </div>
-    </section>
-
-
-    <section class="conceptos">
-
-        <article>
-            <span class="variable">g(n)</span>
-            <div>
-                <strong>Costo acumulado</strong>
-                <p>Lo que ya hemos gastado desde el inicio.</p>
-            </div>
-        </article>
-
-        <article>
-            <span class="variable">h(n)</span>
-            <div>
-                <strong>Heurística</strong>
-                <p>Estimación de lo que falta hasta la meta.</p>
-            </div>
-        </article>
-
-        <article>
-            <span class="variable">f(n)</span>
-            <div>
-                <strong>Evaluación</strong>
-                <p>Valor que utiliza A* para decidir.</p>
-            </div>
-        </article>
-
-    </section>
-
-
-    <section class="laboratorio">
-
-        <!-- GRAFO -->
-        <article class="tarjeta grafo-panel">
-
-            <div class="titulo-panel">
-                <div>
-                    <span class="numero">01</span>
-                    <div>
-                        <h3>Grafo del problema</h3>
-                        <p>Los números sobre las aristas representan costos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-svg">
-
-                <svg viewBox="0 0 760 500" id="grafo">
-
-                    <!-- ARISTAS -->
-
-                    <line id="SA" x1="110" y1="250" x2="300" y2="110"
-                          class="arista"/>
-
-                    <line id="SB" x1="110" y1="250" x2="300" y2="390"
-                          class="arista"/>
-
-                    <line id="AC" x1="300" y1="110" x2="500" y2="110"
-                          class="arista"/>
-
-                    <line id="AG" x1="300" y1="110" x2="650" y2="250"
-                          class="arista"/>
-
-                    <line id="BG" x1="300" y1="390" x2="650" y2="250"
-                          class="arista"/>
-
-                    <line id="CG" x1="500" y1="110" x2="650" y2="250"
-                          class="arista"/>
-
-
-                    <!-- COSTOS -->
-
-                    <g class="costo-arista">
-                        <rect x="185" y="160" width="38" height="30" rx="8"/>
-                        <text x="204" y="181">2</text>
-                    </g>
-
-                    <g class="costo-arista">
-                        <rect x="185" y="310" width="38" height="30" rx="8"/>
-                        <text x="204" y="331">4</text>
-                    </g>
-
-                    <g class="costo-arista">
-                        <rect x="380" y="82" width="38" height="30" rx="8"/>
-                        <text x="399" y="103">2</text>
-                    </g>
-
-                    <g class="costo-arista">
-                        <rect x="440" y="180" width="38" height="30" rx="8"/>
-                        <text x="459" y="201">7</text>
-                    </g>
-
-                    <g class="costo-arista">
-                        <rect x="450" y="320" width="38" height="30" rx="8"/>
-                        <text x="469" y="341">5</text>
-                    </g>
-
-                    <g class="costo-arista">
-                        <rect x="555" y="155" width="38" height="30" rx="8"/>
-                        <text x="574" y="176">2</text>
-                    </g>
-
-
-                    <!-- NODO S -->
-
-                    <g id="nodo-S" class="nodo">
-                        <circle cx="110" cy="250" r="43"/>
-                        <text x="110" y="258" class="letra">S</text>
-                        <text x="110" y="320" class="valor-h">h=5</text>
-                    </g>
-
-
-                    <!-- NODO A -->
-
-                    <g id="nodo-A" class="nodo">
-                        <circle cx="300" cy="110" r="43"/>
-                        <text x="300" y="118" class="letra">A</text>
-                        <text x="300" y="55" class="valor-h">h=4</text>
-                    </g>
-
-
-                    <!-- NODO B -->
-
-                    <g id="nodo-B" class="nodo">
-                        <circle cx="300" cy="390" r="43"/>
-                        <text x="300" y="398" class="letra">B</text>
-                        <text x="300" y="460" class="valor-h">h=4</text>
-                    </g>
-
-
-                    <!-- NODO C -->
-
-                    <g id="nodo-C" class="nodo">
-                        <circle cx="500" cy="110" r="43"/>
-                        <text x="500" y="118" class="letra">C</text>
-                        <text x="500" y="55" class="valor-h">h=2</text>
-                    </g>
-
-
-                    <!-- NODO G -->
-
-                    <g id="nodo-G" class="nodo meta">
-                        <circle cx="650" cy="250" r="43"/>
-                        <text x="650" y="258" class="letra">G</text>
-                        <text x="650" y="320" class="valor-h">h=0</text>
-                    </g>
-
-                </svg>
-
-            </div>
-
-
-            <div class="leyenda">
-
-                <div>
-                    <span class="muestra sin-explorar"></span>
-                    Sin explorar
-                </div>
-
-                <div>
-                    <span class="muestra actual"></span>
-                    Nodo actual
-                </div>
-
-                <div>
-                    <span class="muestra explorado"></span>
-                    Explorado
-                </div>
-
-                <div>
-                    <span class="muestra camino"></span>
-                    Camino final
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PANEL DERECHO -->
-
-        <article class="tarjeta explicacion-panel">
-
-            <div class="titulo-panel">
-                <div>
-                    <span class="numero">02</span>
-                    <div>
-                        <h3>¿Qué está haciendo A*?</h3>
-                        <p>Avanza con los botones para observar cada decisión.</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="indicador-paso" id="pasoNumero">
-                PASO 0 DE 5
-            </div>
-
-            <h3 class="titulo-paso" id="tituloPaso">
-                Comenzamos en S
-            </h3>
-
-            <p id="descripcionPaso" class="descripcion-paso">
-                S es nuestro nodo inicial. Todavía no hemos explorado sus vecinos.
+                Cada módulo presenta el algoritmo,
+                su funcionamiento y una aplicación visual.
             </p>
 
-
-            <div class="calculos" id="calculos">
-
-                <div class="fila-calculo">
-                    <span>g(S)</span>
-                    <strong>0</strong>
-                </div>
-
-                <div class="fila-calculo">
-                    <span>h(S)</span>
-                    <strong>5</strong>
-                </div>
-
-                <div class="fila-calculo destacado">
-                    <span>f(S)</span>
-                    <strong>0 + 5 = 5</strong>
-                </div>
-
-            </div>
+        </div>
 
 
-            <div class="open-panel">
+        <div class="tarjetas">
 
-                <div class="subtitulo">
-                    <span>OPEN</span>
-                    <small>Nodos pendientes</small>
-                </div>
 
-                <div id="listaOpen" class="lista-open">
-                    <div class="open-elemento primero">
-                        <span>S</span>
-                        <span>f = 5</span>
+            <!-- =========================================
+                 A*
+                 ========================================= -->
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-superior a-estrella">
+
+                    <div class="icono">
+                        ⭐
                     </div>
+
+                    <span class="numero">
+                        01
+                    </span>
+
                 </div>
 
-            </div>
 
+                <div class="tarjeta-contenido">
 
-            <div class="razonamiento">
+                    <span class="tipo">
+                        BÚSQUEDA INFORMADA
+                    </span>
 
-                <span class="icono">💡</span>
+                    <h3>
+                        A* (A-estrella)
+                    </h3>
 
-                <div>
-                    <strong>¿Por qué?</strong>
-
-                    <p id="razonPaso">
-                        Primero debemos partir del nodo inicial S.
-                        En el siguiente paso evaluaremos A y B.
+                    <p>
+                        Encuentra un camino hacia una meta
+                        combinando el costo recorrido con una
+                        estimación de lo que falta.
                     </p>
+
+
+                    <div class="formula">
+                        f(n) = g(n) + h(n)
+                    </div>
+
+
+                    <div class="conceptos">
+
+                        <span>Grafo</span>
+                        <span>Heurística</span>
+                        <span>Camino</span>
+
+                    </div>
+
+
+                    <div class="aplicacion">
+
+                        <span>🎮 Aplicación</span>
+
+                        <strong>
+                            Navegación y búsqueda de rutas
+                        </strong>
+
+                    </div>
+
+
+                    <!--
+                    Luego cambiaremos este bloque por:
+
+                    <a href="./a_estrella/"
+                       class="boton">
+                        Explorar simulación →
+                    </a>
+                    -->
+
+                    <div class="boton bloqueado">
+                        Preparando simulador
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =========================================
+                 HILL CLIMBING
+                 ========================================= -->
+
+            <article class="tarjeta destacada">
+
+                <div class="tarjeta-superior hill">
+
+                    <div class="icono">
+                        🚁
+                    </div>
+
+                    <span class="numero">
+                        02
+                    </span>
+
+                </div>
+
+
+                <div class="tarjeta-contenido">
+
+                    <span class="tipo">
+                        OPTIMIZACIÓN LOCAL
+                    </span>
+
+                    <h3>
+                        Hill Climbing
+                    </h3>
+
+                    <p>
+                        Mejora progresivamente una solución
+                        comparándola únicamente con sus
+                        vecinos inmediatos.
+                    </p>
+
+
+                    <div class="formula">
+                        mejor vecino &gt; actual
+                    </div>
+
+
+                    <div class="conceptos">
+
+                        <span>Vecinos</span>
+                        <span>Evaluación</span>
+                        <span>Máximos</span>
+
+                    </div>
+
+
+                    <div class="aplicacion">
+
+                        <span>🎮 Aplicación</span>
+
+                        <strong>
+                            Dron buscando señal
+                        </strong>
+
+                    </div>
+
+
+                    <a href="./hill_climbing/"
+                       class="boton">
+
+                        Jugar simulación →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =========================================
+                 FLUJO
+                 ========================================= -->
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-superior flujo">
+
+                    <div class="icono">
+                        🚗
+                    </div>
+
+                    <span class="numero">
+                        03
+                    </span>
+
+                </div>
+
+
+                <div class="tarjeta-contenido">
+
+                    <span class="tipo">
+                        OPTIMIZACIÓN EN REDES
+                    </span>
+
+                    <h3>
+                        Flujo Máximo y Costo Mínimo
+                    </h3>
+
+                    <p>
+                        Analiza cuánto puede transportarse
+                        por una red y cómo hacerlo utilizando
+                        los recursos de manera eficiente.
+                    </p>
+
+
+                    <div class="formula">
+                        flujo ≤ capacidad
+                    </div>
+
+
+                    <div class="conceptos">
+
+                        <span>Capacidad</span>
+                        <span>Flujo</span>
+                        <span>Costo</span>
+
+                    </div>
+
+
+                    <div class="aplicacion">
+
+                        <span>🎮 Aplicación</span>
+
+                        <strong>
+                            Evacuación y transporte urbano
+                        </strong>
+
+                    </div>
+
+
+                    <div class="boton bloqueado">
+                        Próximamente
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         COMPARACIÓN
+         ================================================= -->
+
+    <section class="comparacion">
+
+        <div class="titulo-seccion">
+
+            <span>
+                CONECTANDO LOS CONCEPTOS
+            </span>
+
+            <h2>
+                Tres algoritmos, tres preguntas diferentes
+            </h2>
+
+        </div>
+
+
+        <div class="preguntas">
+
+
+            <div class="pregunta">
+
+                <div class="pregunta-icono">
+                    ⭐
+                </div>
+
+                <div>
+
+                    <span>A*</span>
+
+                    <strong>
+                        ¿Por dónde debo ir?
+                    </strong>
+
+                    <p>
+                        Busca un camino utilizando
+                        costo y heurística.
+                    </p>
+
                 </div>
 
             </div>
 
-        </article>
-
-    </section>
 
 
-    <!-- CONTROLES -->
+            <div class="pregunta">
 
-    <section class="controles">
+                <div class="pregunta-icono">
+                    🏔️
+                </div>
 
-        <button id="anterior" class="boton secundario">
-            ← Anterior
-        </button>
+                <div>
 
-        <div class="progreso">
-            <div id="barraProgreso"></div>
+                    <span>Hill Climbing</span>
+
+                    <strong>
+                        ¿Cómo puedo mejorar?
+                    </strong>
+
+                    <p>
+                        Busca una solución mejor
+                        comparando vecinos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="pregunta">
+
+                <div class="pregunta-icono">
+                    🚗
+                </div>
+
+                <div>
+
+                    <span>Flujo</span>
+
+                    <strong>
+                        ¿Cuánto puedo transportar?
+                    </strong>
+
+                    <p>
+                        Utiliza las capacidades
+                        disponibles de una red.
+                    </p>
+
+                </div>
+
+            </div>
+
+
         </div>
 
-        <button id="siguiente" class="boton principal">
-            Siguiente →
-        </button>
-
-        <button id="reiniciar" class="boton reiniciar">
-            ↻ Reiniciar
-        </button>
-
     </section>
 
 
-    <section class="resumen">
+
+    <!-- =================================================
+         FLUJO DEL CURSO
+         ================================================= -->
+
+    <section class="conexion-curso">
+
+        <div class="conexion-icono">
+            💡
+        </div>
 
         <div>
-            <strong>Recuerda</strong>
+
+            <strong>
+                Del modelo a la simulación
+            </strong>
+
             <p>
-                A* selecciona el nodo pendiente con el menor valor
-                de <b>f(n) = g(n) + h(n)</b>.
+                En cada laboratorio observa primero el problema,
+                identifica las variables y reglas del modelo,
+                ejecuta el algoritmo y finalmente interpreta
+                el resultado.
             </p>
+
         </div>
 
-        <div class="resultado-final" id="resultadoFinal">
-            Camino final:
-            <strong>todavía no encontrado</strong>
+
+        <div class="cadena">
+
+            Problema
+            <span>→</span>
+            Modelo
+            <span>→</span>
+            Algoritmo
+            <span>→</span>
+            Simulación
+            <span>→</span>
+            Resultado
+
         </div>
 
     </section>
+
 
 </main>
 
+
+
 <footer>
-    CC3074 — Modelización y Simulación · Universidad del Valle de Guatemala
+
+    <strong>
+        CC3074 — Modelización y Simulación
+    </strong>
+
+    <span>
+        Universidad del Valle de Guatemala · 2026
+    </span>
+
 </footer>
 
-<script src="./app.js"></script>
 
 </body>
+
 </html>
