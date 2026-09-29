@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Euler paso a paso — CC3074
+    </title>
+
+    <link rel="stylesheet"
+          href="./style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header>
+
+    <div class="header-contenido">
+
+        <div>
+
+            <span class="codigo">
+                CC3074
+            </span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Métodos Numéricos — Euler Explícito
+            </p>
+
+        </div>
+
+
+        <a href="../"
+           class="volver">
+
+            ← Volver al laboratorio
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="hero">
+
+    <div>
+
+        <span class="etiqueta">
+            LABORATORIO 01
+        </span>
+
+        <h2>
+            📐 Euler paso a paso
+        </h2>
+
+        <p>
+            Observa cómo el método de Euler utiliza
+            la pendiente actual del sistema para estimar
+            cuál será su siguiente estado.
+        </p>
+
+    </div>
+
+
+    <div class="formula-principal">
+
+        <span>
+            MÉTODO DE EULER
+        </span>
+
+        <strong>
+            yₙ₊₁ = yₙ + h · f(tₙ,yₙ)
+        </strong>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ¿QUÉ SIGNIFICA?
+     ===================================================== -->
+
+<section class="variables">
+
+    <article>
+
+        <span class="variable">
+            t
+        </span>
+
+        <div>
+
+            <strong>
+                Tiempo
+            </strong>
+
+            <p>
+                Indica el instante actual
+                de la simulación.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="variable">
+            y
+        </span>
+
+        <div>
+
+            <strong>
+                Estado
+            </strong>
+
+            <p>
+                Representa el valor del sistema
+                que queremos aproximar.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="variable">
+            h
+        </span>
+
+        <div>
+
+            <strong>
+                Tamaño de paso
+            </strong>
+
+            <p>
+                Indica cuánto avanzamos
+                en cada iteración.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="variable">
+            f
+        </span>
+
+        <div>
+
+            <strong>
+                Pendiente
+            </strong>
+
+            <p>
+                Indica qué tan rápido cambia
+                el sistema en ese instante.
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =====================================================
+     CASO
+     ===================================================== -->
+
+<section class="caso">
+
+    <div class="caso-icono">
+        ☕
+    </div>
+
+
+    <div>
+
+        <span class="mini-etiqueta">
+            CASO DE ESTUDIO
+        </span>
+
+        <h2>
+            Enfriamiento de Newton
+        </h2>
+
+        <p>
+            Tenemos un objeto caliente en una habitación.
+            Conforme pasa el tiempo, su temperatura se acerca
+            a la temperatura del ambiente.
+        </p>
+
+    </div>
+
+
+    <div class="ecuacion-caso">
+
+        <span>
+            Modelo
+        </span>
+
+        <strong>
+            dT/dt = -k(T - Tₐ)
+        </strong>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VARIABLES DEL CASO
+     ===================================================== -->
+
+<section class="datos-caso">
+
+    <article>
+
+        <span>
+            T(0)
+        </span>
+
+        <strong>
+            90 °C
+        </strong>
+
+        <p>
+            Temperatura inicial
+        </p>
+
+    </article>
+
+
+    <article>
+
+        <span>
+            Tₐ
+        </span>
+
+        <strong>
+            20 °C
+        </strong>
+
+        <p>
+            Temperatura ambiente
+        </p>
+
+    </article>
+
+
+    <article>
+
+        <span>
+            k
+        </span>
+
+        <strong>
+            0.1
+        </strong>
+
+        <p>
+            Constante de enfriamiento
+        </p>
+
+    </article>
+
+
+    <article>
+
+        <span>
+            h
+        </span>
+
+        <strong>
+            1 min
+        </strong>
+
+        <p>
+            Tamaño de paso
+        </p>
+
+    </article>
+
+</section>
+
+
+
+<!-- =====================================================
+     LABORATORIO
+     ===================================================== -->
+
+<section class="laboratorio">
+
+
+    <!-- =================================================
+         VISUAL
+         ================================================= -->
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <span class="numero">
+                01
+            </span>
+
+            <div>
+
+                <h3>
+                    Sistema simulado
+                </h3>
+
+                <p>
+                    Observa cómo cambia la temperatura
+                    en cada paso.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="simulacion-temperatura">
+
+            <div class="ambiente">
+
+                <span>
+                    🌬️ Ambiente
+                </span>
+
+                <strong>
+                    20 °C
+                </strong>
+
+            </div>
+
+
+            <div class="taza">
+
+                <div class="vapor">
+                    〰 〰 〰
+                </div>
+
+                <div class="taza-icono">
+                    ☕
+                </div>
+
+            </div>
+
+
+            <div class="temperatura-grande">
+
+                <span id="temperaturaVisual">
+                    90.00
+                </span>
+
+                <small>
+                    °C
+                </small>
+
+            </div>
+
+
+            <div class="termometro">
+
+                <div class="barra-termometro">
+
+                    <div id="nivelTemperatura">
+                    </div>
+
+                </div>
+
+
+                <div class="escala">
+
+                    <span>
+                        100 °C
+                    </span>
+
+                    <span>
+                        60 °C
+                    </span>
+
+                    <span>
+                        20 °C
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="tiempo-visual">
+
+                Tiempo simulado:
+
+                <strong id="tiempoVisual">
+                    0 min
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         CÁLCULO
+         ================================================= -->
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <span class="numero">
+                02
+            </span>
+
+            <div>
+
+                <h3>
+                    Cálculo de Euler
+                </h3>
+
+                <p>
+                    Seguimos exactamente los pasos
+                    de la fórmula.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="estadoPaso"
+             class="estado-paso">
+
+            PASO 0
+
+        </div>
+
+
+        <div class="estado-actual">
+
+            <div>
+
+                <span>
+                    tₙ
+                </span>
+
+                <strong id="valorT">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Tₙ
+                </span>
+
+                <strong id="valorY">
+                    90.00 °C
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    h
+                </span>
+
+                <strong>
+                    1 min
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="calculo">
+
+            <span class="calculo-titulo">
+                1. Calcular la pendiente
+            </span>
+
+
+            <div id="calculoPendiente"
+                 class="formula-calculo">
+
+                f(t₀,T₀)
+                =
+                -0.1(90 - 20)
+
+            </div>
+
+
+            <div id="resultadoPendiente"
+                 class="resultado-calculo">
+
+                = -7.00 °C/min
+
+            </div>
+
+        </div>
+
+
+        <div class="interpretacion">
+
+            <span>
+                💡
+            </span>
+
+            <div>
+
+                <strong>
+                    ¿Qué significa?
+                </strong>
+
+                <p id="interpretacionPendiente">
+
+                    La pendiente es negativa porque
+                    la temperatura está disminuyendo.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="calculo">
+
+            <span class="calculo-titulo">
+                2. Aplicar Euler
+            </span>
+
+
+            <div class="formula-general">
+
+                Tₙ₊₁ =
+                Tₙ +
+                h · f(tₙ,Tₙ)
+
+            </div>
+
+
+            <div id="calculoEuler"
+                 class="formula-calculo">
+
+                T₁ =
+                90 +
+                1(-7)
+
+            </div>
+
+
+            <div id="resultadoEuler"
+                 class="resultado-calculo destacado">
+
+                T₁ = 83.00 °C
+
+            </div>
+
+        </div>
+
+
+        <div class="decision">
+
+            <span>
+                👣
+            </span>
+
+            <div>
+
+                <strong>
+                    Nuevo estado
+                </strong>
+
+                <p id="nuevoEstado">
+
+                    Después de avanzar 1 minuto,
+                    Euler estima una temperatura
+                    de 83.00 °C.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTROLES
+     ===================================================== -->
+
+<section class="controles">
+
+    <button id="anterior"
+            class="boton secundario">
+
+        ← Paso anterior
+
+    </button>
+
+
+    <div class="barra">
+
+        <div id="progreso">
+        </div>
+
+    </div>
+
+
+    <button id="siguiente"
+            class="boton principal">
+
+        Siguiente paso →
+
+    </button>
+
+
+    <button id="automatico"
+            class="boton principal">
+
+        ▶ Automático
+
+    </button>
+
+
+    <button id="reiniciar"
+            class="boton gris">
+
+        ↻ Reiniciar
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     GRÁFICA
+     ===================================================== -->
+
+<section class="panel grafica-panel">
+
+    <div class="panel-header">
+
+        <span class="numero">
+            03
+        </span>
+
+        <div>
+
+            <h3>
+                Construcción de la solución
+            </h3>
+
+            <p>
+                Cada punto verde es una aproximación
+                calculada por Euler.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="grafica-layout">
+
+        <div class="grafica">
+
+            <svg id="grafica"
+                 viewBox="0 0 900 430">
+
+                <!-- CUADRÍCULA -->
+
+                <g id="cuadricula">
+                </g>
+
+
+                <!-- EJES -->
+
+                <line x1="80"
+                      y1="35"
+                      x2="80"
+                      y2="360"
+                      class="eje"/>
+
+                <line x1="80"
+                      y1="360"
+                      x2="850"
+                      y2="360"
+                      class="eje"/>
+
+
+                <!-- LABELS -->
+
+                <text x="30"
+                      y="45"
+                      class="label-eje">
+                    T (°C)
+                </text>
+
+                <text x="790"
+                      y="405"
+                      class="label-eje">
+                    t (min)
+                </text>
+
+
+                <!-- CURVA EXACTA -->
+
+                <path id="curvaExacta"
+                      class="curva-exacta"/>
+
+
+                <!-- EULER -->
+
+                <polyline id="lineaEuler"
+                          class="linea-euler"/>
+
+
+                <g id="puntosEuler">
+                </g>
+
+            </svg>
+
+        </div>
+
+
+        <div class="leyenda-grafica">
+
+            <div>
+
+                <span class="linea-leyenda exacta">
+                </span>
+
+                <div>
+                    <strong>
+                        Solución exacta
+                    </strong>
+
+                    <small>
+                        Referencia
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <span class="linea-leyenda euler">
+                </span>
+
+                <div>
+                    <strong>
+                        Euler
+                    </strong>
+
+                    <small>
+                        Aproximación
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TABLA
+     ===================================================== -->
+
+<section class="panel tabla-panel">
+
+    <div class="panel-header">
+
+        <span class="numero">
+            04
+        </span>
+
+        <div>
+
+            <h3>
+                Tabla de iteraciones
+            </h3>
+
+            <p>
+                Cada fila representa un estado
+                de la simulación.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="tabla-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        n
+                    </th>
+
+                    <th>
+                        tₙ
+                    </th>
+
+                    <th>
+                        Tₙ
+                    </th>
+
+                    <th>
+                        f(tₙ,Tₙ)
+                    </th>
+
+                    <th>
+                        Tₙ₊₁
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="tablaEuler">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IDEA CENTRAL
+     ===================================================== -->
+
+<section class="idea-central">
+
+    <div class="idea-icono">
+        🧠
+    </div>
+
+
+    <div>
+
+        <span>
+            IDEA CENTRAL
+        </span>
+
+        <h2>
+            Euler mira la pendiente actual
+        </h2>
+
+        <p>
+            Euler supone que durante el siguiente intervalo
+            la pendiente actual es una buena aproximación
+            del comportamiento del sistema. Por eso avanza
+            utilizando una línea recta durante cada paso.
+        </p>
+
+    </div>
+
+
+    <div class="cadena-euler">
+
+        <span>
+            Estado actual
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Pendiente
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Avanzar h
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Nuevo estado
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SIGUIENTE
+     ===================================================== -->
+
+<section class="siguiente-lab">
+
+    <div>
+
+        <span>
+            SIGUIENTE LABORATORIO
+        </span>
+
+        <h3>
+            ¿Euler es suficientemente preciso?
+        </h3>
+
+        <p>
+            En el siguiente laboratorio compararemos
+            esta aproximación con Runge-Kutta de cuarto orden.
+        </p>
+
+    </div>
+
+
+    <a href="../euler_vs_rk4/"
+       class="boton-siguiente">
+
+        Euler vs. RK4 →
+
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     REGRESAR
+     ===================================================== -->
+
+<section class="regreso-laboratorio">
+
+    <div>
+
+        <span>
+            ✓ LABORATORIO
+        </span>
+
+        <h3>
+            Métodos Numéricos
+        </h3>
+
+        <p>
+            Regresa al menú para explorar
+            otro laboratorio.
+        </p>
+
+    </div>
+
+
+    <a href="../"
+       class="boton-regreso">
+
+        ← Volver al laboratorio
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <strong>
+        CC3074 — Modelización y Simulación
+    </strong>
+
+    <span>
+        Universidad del Valle de Guatemala · 2026
+    </span>
+
+</footer>
+
+
+<script src="./app.js"></script>
+
+</body>
+
+</html>
