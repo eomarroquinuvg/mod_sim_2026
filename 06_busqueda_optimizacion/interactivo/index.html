@@ -1,77 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Laboratorio Interactivo - Modelización y Simulación</title>
+    <title>Laboratorio Interactivo - A*</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            text-align: center;
-        }
-
-        header {
-            background-color: #008D36;
-            color: white;
-            padding: 30px;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-        }
-
-        h2 {
-            color: #008D36;
-        }
-
-        .estado {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #eeeeee;
-            border-radius: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
     <h1>CC3074 – Modelización y Simulación</h1>
-    <p>Laboratorio Interactivo</p>
+    <p>Laboratorio Interactivo — Búsqueda y Optimización</p>
 </header>
 
 <main>
 
-    <h2>Búsqueda y Optimización</h2>
+    <section class="introduccion">
 
-    <p>
-        Universidad del Valle de Guatemala
-    </p>
+        <h2>A* (A-estrella)</h2>
 
-    <div class="estado">
+        <p>
+            A* busca un camino desde un nodo inicial hasta una meta
+            utilizando el costo recorrido y una estimación de lo que falta.
+        </p>
 
-        <h3>Temas</h3>
+        <div class="formula">
+            f(n) = g(n) + h(n)
+        </div>
 
-        <p>⭐ A* (A-estrella)</p>
-        <p>⛰️ Hill Climbing</p>
-        <p>🌐 Flujo Máximo y Costo Mínimo</p>
+        <div class="definiciones">
 
-    </div>
+            <div>
+                <strong>g(n)</strong>
+                <span>Costo acumulado desde el inicio.</span>
+            </div>
 
-    <p>
-        Este laboratorio permitirá visualizar paso a paso
-        el funcionamiento de los algoritmos estudiados en clase.
-    </p>
+            <div>
+                <strong>h(n)</strong>
+                <span>Estimación desde el nodo hasta la meta.</span>
+            </div>
+
+            <div>
+                <strong>f(n)</strong>
+                <span>Valor utilizado por A* para decidir.</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="simulador">
+
+        <!-- GRAFO -->
+
+        <div class="panel-grafo">
+
+            <h3>Grafo del problema</h3>
+
+            <svg viewBox="0 0 700 420" class="grafo">
+
+                <!-- ARISTAS -->
+
+                <line x1="100" y1="210"
+                      x2="280" y2="100"
+                      class="arista"/>
+
+                <line x1="100" y1="210"
+                      x2="280" y2="320"
+                      class="arista"/>
+
+                <line x1="280" y1="100"
+                      x2="460" y2="100"
+                      class="arista"/>
+
+                <line x1="280" y1="100"
+                      x2="600" y2="210"
+                      class="arista"/>
+
+                <line x1="280" y1="320"
+                      x2="600" y2="210"
+                      class="arista"/>
+
+                <line x1="460" y1="100"
+                      x2="600" y2="210"
+                      class="arista"/>
+
+
+                <!-- COSTOS -->
+
+                <text x="175" y="135" class="costo">2</text>
+
+                <text x="175" y="295" class="costo">4</text>
+
+                <text x="365" y="80" class="costo">2</text>
+
+                <text x="435" y="170" class="costo">7</text>
+
+                <text x="450" y="295" class="costo">5</text>
+
+                <text x="535" y="135" class="costo">2</text>
+
+
+                <!-- NODOS -->
+
+                <g id="nodo-S" class="nodo actual">
+                    <circle cx="100" cy="210" r="38"/>
+                    <text x="100" y="217">S</text>
+                </g>
+
+                <g id="nodo-A" class="nodo">
+                    <circle cx="280" cy="100" r="38"/>
+                    <text x="280" y="107">A</text>
+                </g>
+
+                <g id="nodo-B" class="nodo">
+                    <circle cx="280" cy="320" r="38"/>
+                    <text x="280" y="327">B</text>
+                </g>
+
+                <g id="nodo-C" class="nodo">
+                    <circle cx="460" cy="100" r="38"/>
+                    <text x="460" y="107">C</text>
+                </g>
+
+                <g id="nodo-G" class="nodo meta">
+                    <circle cx="600" cy="210" r="38"/>
+                    <text x="600" y="217">G</text>
+                </g>
+
+
+                <!-- HEURÍSTICAS -->
+
+                <text x="70" y="270" class="heuristica">
+                    h=5
+                </text>
+
+                <text x="250" y="160" class="heuristica">
+                    h=4
+                </text>
+
+                <text x="250" y="380" class="heuristica">
+                    h=4
+                </text>
+
+                <text x="430" y="55" class="heuristica">
+                    h=2
+                </text>
+
+                <text x="570" y="270" class="heuristica">
+                    h=0
+                </text>
+
+            </svg>
+
+            <div class="leyenda">
+
+                <span>
+                    <b class="circulo actual-color"></b>
+                    Nodo actual
+                </span>
+
+                <span>
+                    <b class="circulo normal-color"></b>
+                    Sin explorar
+                </span>
+
+                <span>
+                    <b class="circulo meta-color"></b>
+                    Meta
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPLICACIÓN -->
+
+        <div class="panel-explicacion">
+
+            <div class="paso">
+                PASO 0
+            </div>
+
+            <h3>Comenzamos en S</h3>
+
+            <p class="descripcion">
+                El algoritmo comienza en el nodo inicial S.
+            </p>
+
+
+            <div class="calculo">
+
+                <h4>Nodo actual</h4>
+
+                <p>
+                    g(S) = 0
+                </p>
+
+                <p>
+                    h(S) = 5
+                </p>
+
+                <p class="resultado">
+                    f(S) = 0 + 5 = 5
+                </p>
+
+            </div>
+
+
+            <div class="open">
+
+                <h4>OPEN</h4>
+
+                <div class="open-item">
+                    S
+                    <span>f = 5</span>
+                </div>
+
+            </div>
+
+
+            <div class="explicacion">
+
+                <strong>¿Qué está ocurriendo?</strong>
+
+                <p>
+                    Estamos en S. Todavía no hemos explorado
+                    ninguno de sus vecinos.
+                </p>
+
+                <p>
+                    El siguiente paso será analizar A y B.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTROLES -->
+
+    <section class="controles">
+
+        <button disabled>
+            ← Anterior
+        </button>
+
+        <button class="principal">
+            Siguiente →
+        </button>
+
+        <button>
+            ↻ Reiniciar
+        </button>
+
+    </section>
+
+
+    <section class="nota">
+
+        <strong>Objetivo:</strong>
+
+        observar cómo A* combina el costo recorrido
+        <strong>g(n)</strong>
+
+        con la estimación restante
+        <strong>h(n)</strong>
+
+        para seleccionar el siguiente nodo.
+
+    </section>
 
 </main>
 
+<script src="app.js"></script>
+
 </body>
+
 </html>
