@@ -1,1 +1,303 @@
-/* Estilos del laboratorio interactivo */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f5;
+    color: #222;
+}
+
+header {
+    background: #008D36;
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header h1 {
+    margin: 0 0 8px 0;
+}
+
+header p {
+    margin: 0;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 20px 50px;
+}
+
+
+/* INTRODUCCIÓN */
+
+.introduccion {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.introduccion h2 {
+    color: #008D36;
+    font-size: 30px;
+}
+
+.formula {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 30px;
+    background: #e7f5ec;
+    border: 2px solid #008D36;
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.definiciones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.definiciones div {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 14px;
+    border-radius: 8px;
+    width: 260px;
+}
+
+.definiciones strong {
+    color: #008D36;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+
+/* SIMULADOR */
+
+.simulador {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+}
+
+.panel-grafo,
+.panel-explicacion {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid #ddd;
+}
+
+.panel-grafo h3,
+.panel-explicacion h3 {
+    margin-top: 0;
+}
+
+
+/* GRAFO */
+
+.grafo {
+    width: 100%;
+    height: auto;
+}
+
+.arista {
+    stroke: #777;
+    stroke-width: 4;
+}
+
+.costo {
+    font-size: 20px;
+    font-weight: bold;
+    fill: #333;
+}
+
+.heuristica {
+    font-size: 17px;
+    fill: #555;
+    font-weight: bold;
+}
+
+.nodo circle {
+    fill: white;
+    stroke: #555;
+    stroke-width: 4;
+}
+
+.nodo text {
+    text-anchor: middle;
+    font-size: 22px;
+    font-weight: bold;
+    fill: #222;
+}
+
+.nodo.actual circle {
+    fill: #008D36;
+    stroke: #006c2a;
+}
+
+.nodo.actual text {
+    fill: white;
+}
+
+.nodo.meta circle {
+    stroke: #d39b00;
+    stroke-width: 5;
+}
+
+
+/* LEYENDA */
+
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.leyenda span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.circulo {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.actual-color {
+    background: #008D36;
+}
+
+.normal-color {
+    background: white;
+    border: 2px solid #555;
+}
+
+.meta-color {
+    background: white;
+    border: 3px solid #d39b00;
+}
+
+
+/* PANEL EXPLICACIÓN */
+
+.paso {
+    display: inline-block;
+    background: #008D36;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.descripcion {
+    color: #555;
+}
+
+.calculo {
+    background: #f4f4f4;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.calculo h4,
+.open h4 {
+    margin-top: 0;
+}
+
+.resultado {
+    color: #008D36;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.open {
+    margin: 20px 0;
+}
+
+.open-item {
+    border-left: 5px solid #008D36;
+    background: #edf7f1;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.open-item span {
+    float: right;
+}
+
+.explicacion {
+    background: #fff8dc;
+    border-left: 5px solid #e0ae00;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+
+/* CONTROLES */
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 24px;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.principal {
+    background: #008D36;
+    color: white;
+    border-color: #008D36;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* NOTA */
+
+.nota {
+    text-align: center;
+    background: white;
+    border-top: 4px solid #008D36;
+    padding: 18px;
+    border-radius: 8px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .simulador {
+        grid-template-columns: 1fr;
+    }
+
+}
