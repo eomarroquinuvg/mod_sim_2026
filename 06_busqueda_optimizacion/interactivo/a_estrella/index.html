@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        A* — Laboratorio Interactivo
+    </title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header>
+
+    <div class="header-contenido">
+
+        <div>
+
+            <span class="codigo">
+                CC3074
+            </span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Laboratorio Interactivo — A* (A-estrella)
+            </p>
+
+        </div>
+
+
+        <a href="../"
+           class="volver">
+
+            ← Volver al laboratorio
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- =================================================
+         INTRODUCCIÓN
+         ================================================= -->
+
+    <section class="hero">
+
+        <div>
+
+            <span class="etiqueta">
+                BÚSQUEDA INFORMADA
+            </span>
+
+            <h2>
+                ⭐ A* (A-estrella)
+            </h2>
+
+            <p>
+                A* busca un camino hacia una meta combinando
+                el costo que ya hemos recorrido con una estimación
+                de cuánto falta para llegar.
+            </p>
+
+        </div>
+
+
+        <div class="formula-principal">
+
+            f(n) = g(n) + h(n)
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONCEPTOS
+         ================================================= -->
+
+    <section class="conceptos-principales">
+
+        <article>
+
+            <span class="variable">
+                g(n)
+            </span>
+
+            <div>
+
+                <strong>
+                    Costo acumulado
+                </strong>
+
+                <p>
+                    Cuánto hemos gastado para llegar
+                    desde el inicio hasta el nodo n.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <span class="variable">
+                h(n)
+            </span>
+
+            <div>
+
+                <strong>
+                    Heurística
+                </strong>
+
+                <p>
+                    Estimación de cuánto falta
+                    desde n hasta la meta.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article>
+
+            <span class="variable">
+                f(n)
+            </span>
+
+            <div>
+
+                <strong>
+                    Evaluación
+                </strong>
+
+                <p>
+                    Valor que A* utiliza para
+                    decidir qué nodo explorar.
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MODOS
+         ================================================= -->
+
+    <section class="selector-modo">
+
+        <button id="btnAlgoritmo"
+                class="modo activo">
+
+            🧠 Modo 1
+            <small>
+                Entender el algoritmo
+            </small>
+
+        </button>
+
+
+        <button id="btnRobot"
+                class="modo">
+
+            🤖 Modo 2
+            <small>
+                Misión de reparto
+            </small>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MODO 1
+         ================================================= -->
+
+    <section id="modoAlgoritmo"
+             class="modo-contenido">
+
+
+        <div class="titulo-modo">
+
+            <span>
+                MODO 1
+            </span>
+
+            <h2>
+                ¿Cómo toma decisiones A*?
+            </h2>
+
+            <p>
+                Avanza paso a paso y observa cómo cambia
+                la lista OPEN y por qué A* selecciona cada nodo.
+            </p>
+
+        </div>
+
+
+
+        <section class="laboratorio">
+
+
+            <!-- GRAFO -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Grafo del problema
+                        </h3>
+
+                        <p>
+                            Los números sobre las conexiones
+                            representan sus costos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grafo-contenedor">
+
+                    <svg id="grafo"
+                         viewBox="0 0 800 500">
+
+
+                        <!-- ARISTAS -->
+
+                        <line id="SA"
+                              x1="110"
+                              y1="250"
+                              x2="300"
+                              y2="110"
+                              class="arista"/>
+
+                        <line id="SB"
+                              x1="110"
+                              y1="250"
+                              x2="300"
+                              y2="390"
+                              class="arista"/>
+
+                        <line id="AC"
+                              x1="300"
+                              y1="110"
+                              x2="500"
+                              y2="110"
+                              class="arista"/>
+
+                        <line id="AG"
+                              x1="300"
+                              y1="110"
+                              x2="680"
+                              y2="250"
+                              class="arista"/>
+
+                        <line id="BG"
+                              x1="300"
+                              y1="390"
+                              x2="680"
+                              y2="250"
+                              class="arista"/>
+
+                        <line id="CG"
+                              x1="500"
+                              y1="110"
+                              x2="680"
+                              y2="250"
+                              class="arista"/>
+
+
+                        <!-- COSTOS -->
+
+                        <g class="costo">
+                            <rect x="185"
+                                  y="155"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="206"
+                                  y="177">
+                                2
+                            </text>
+                        </g>
+
+
+                        <g class="costo">
+                            <rect x="185"
+                                  y="310"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="206"
+                                  y="332">
+                                4
+                            </text>
+                        </g>
+
+
+                        <g class="costo">
+                            <rect x="380"
+                                  y="78"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="401"
+                                  y="100">
+                                2
+                            </text>
+                        </g>
+
+
+                        <g class="costo">
+                            <rect x="455"
+                                  y="170"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="476"
+                                  y="192">
+                                7
+                            </text>
+                        </g>
+
+
+                        <g class="costo">
+                            <rect x="465"
+                                  y="315"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="486"
+                                  y="337">
+                                5
+                            </text>
+                        </g>
+
+
+                        <g class="costo">
+                            <rect x="570"
+                                  y="155"
+                                  width="42"
+                                  height="31"
+                                  rx="8"/>
+
+                            <text x="591"
+                                  y="177">
+                                2
+                            </text>
+                        </g>
+
+
+                        <!-- NODOS -->
+
+                        <g id="nodo-S"
+                           class="nodo">
+
+                            <circle cx="110"
+                                    cy="250"
+                                    r="44"/>
+
+                            <text x="110"
+                                  y="259"
+                                  class="letra">
+                                S
+                            </text>
+
+                            <text x="110"
+                                  y="320"
+                                  class="heuristica">
+                                h=5
+                            </text>
+
+                        </g>
+
+
+                        <g id="nodo-A"
+                           class="nodo">
+
+                            <circle cx="300"
+                                    cy="110"
+                                    r="44"/>
+
+                            <text x="300"
+                                  y="119"
+                                  class="letra">
+                                A
+                            </text>
+
+                            <text x="300"
+                                  y="52"
+                                  class="heuristica">
+                                h=4
+                            </text>
+
+                        </g>
+
+
+                        <g id="nodo-B"
+                           class="nodo">
+
+                            <circle cx="300"
+                                    cy="390"
+                                    r="44"/>
+
+                            <text x="300"
+                                  y="399"
+                                  class="letra">
+                                B
+                            </text>
+
+                            <text x="300"
+                                  y="463"
+                                  class="heuristica">
+                                h=4
+                            </text>
+
+                        </g>
+
+
+                        <g id="nodo-C"
+                           class="nodo">
+
+                            <circle cx="500"
+                                    cy="110"
+                                    r="44"/>
+
+                            <text x="500"
+                                  y="119"
+                                  class="letra">
+                                C
+                            </text>
+
+                            <text x="500"
+                                  y="52"
+                                  class="heuristica">
+                                h=2
+                            </text>
+
+                        </g>
+
+
+                        <g id="nodo-G"
+                           class="nodo meta">
+
+                            <circle cx="680"
+                                    cy="250"
+                                    r="44"/>
+
+                            <text x="680"
+                                  y="259"
+                                  class="letra">
+                                G
+                            </text>
+
+                            <text x="680"
+                                  y="320"
+                                  class="heuristica">
+                                h=0
+                            </text>
+
+                        </g>
+
+
+                    </svg>
+
+                </div>
+
+
+                <div class="leyenda">
+
+                    <div>
+                        <span class="leyenda-punto normal"></span>
+                        Sin explorar
+                    </div>
+
+                    <div>
+                        <span class="leyenda-punto actual"></span>
+                        Actual
+                    </div>
+
+                    <div>
+                        <span class="leyenda-punto explorado"></span>
+                        Explorado
+                    </div>
+
+                    <div>
+                        <span class="leyenda-punto final"></span>
+                        Camino final
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- EXPLICACIÓN -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Decisión de A*
+                        </h3>
+
+                        <p>
+                            Observa qué información utiliza.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="numeroPaso"
+                     class="paso">
+
+                    PASO 0 DE 4
+
+                </div>
+
+
+                <h3 id="tituloPaso"
+                    class="titulo-paso">
+
+                    Comenzamos en S
+
+                </h3>
+
+
+                <p id="descripcionPaso"
+                   class="descripcion">
+
+                    S es el nodo inicial.
+
+                </p>
+
+
+
+                <div id="calculos"
+                     class="calculos">
+                </div>
+
+
+
+                <div class="open">
+
+                    <div class="open-titulo">
+
+                        <strong>
+                            OPEN
+                        </strong>
+
+                        <span>
+                            Nodos pendientes
+                        </span>
+
+                    </div>
+
+
+                    <div id="listaOpen">
+                    </div>
+
+                </div>
+
+
+
+                <div class="decision">
+
+                    <span>
+                        💡
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ¿Por qué?
+                        </strong>
+
+                        <p id="razonPaso">
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- CONTROLES -->
+
+        <section class="controles">
+
+            <button id="anteriorA"
+                    class="boton secundario">
+
+                ← Anterior
+
+            </button>
+
+
+            <div class="barra">
+
+                <div id="progresoA">
+                </div>
+
+            </div>
+
+
+            <button id="siguienteA"
+                    class="boton principal">
+
+                Siguiente →
+
+            </button>
+
+
+            <button id="reiniciarA"
+                    class="boton gris">
+
+                ↻ Reiniciar
+
+            </button>
+
+        </section>
+
+
+
+        <section id="resultadoA"
+                 class="resultado-algoritmo">
+
+            Camino:
+            <strong>
+                todavía no encontrado
+            </strong>
+
+        </section>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MODO 2 — ROBOT
+         ================================================= -->
+
+    <section id="modoRobot"
+             class="modo-contenido oculto">
+
+
+        <div class="titulo-modo">
+
+            <span>
+                MODO 2 — APLICACIÓN
+            </span>
+
+            <h2>
+                🤖 Misión de reparto
+            </h2>
+
+            <p>
+                Un robot debe entregar un paquete.
+                Coloca obstáculos en la ciudad y observa
+                cómo A* encuentra una ruta hasta el destino.
+            </p>
+
+        </div>
+
+
+
+        <section class="mision">
+
+
+            <!-- CIUDAD -->
+
+            <article class="panel ciudad-panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Ciudad simulada
+                        </h3>
+
+                        <p>
+                            Haz clic en una celda vacía
+                            para colocar o quitar un obstáculo.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="leyenda-ciudad">
+
+                    <div>
+                        <span class="mini inicio"></span>
+                        Inicio
+                    </div>
+
+                    <div>
+                        <span class="mini destino"></span>
+                        Destino
+                    </div>
+
+                    <div>
+                        <span class="mini obstaculo"></span>
+                        Obstáculo
+                    </div>
+
+                    <div>
+                        <span class="mini explorada"></span>
+                        Explorado
+                    </div>
+
+                    <div>
+                        <span class="mini ruta"></span>
+                        Ruta
+                    </div>
+
+                </div>
+
+
+
+                <div id="grid"
+                     class="grid">
+                </div>
+
+
+                <div class="controles-grid">
+
+                    <button id="buscarRuta"
+                            class="boton principal">
+
+                        ▶ Buscar ruta con A*
+
+                    </button>
+
+
+                    <button id="pasoRobot"
+                            class="boton secundario">
+
+                        Avanzar un paso
+
+                    </button>
+
+
+                    <button id="limpiarBusqueda"
+                            class="boton gris">
+
+                        Limpiar búsqueda
+
+                    </button>
+
+
+                    <button id="restablecerMapa"
+                            class="boton gris">
+
+                        ↻ Restablecer mapa
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PANEL ROBOT -->
+
+            <article class="panel robot-panel">
+
+                <div class="panel-header">
+
+                    <span class="numero">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            A* trabajando
+                        </h3>
+
+                        <p>
+                            Observa cómo evalúa la ciudad.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="mision-card">
+
+                    <span>
+                        MISIÓN
+                    </span>
+
+                    <strong>
+                        Llevar 📦 al destino
+                    </strong>
+
+                    <p>
+                        El robot 🤖 puede moverse
+                        arriba, abajo, izquierda o derecha.
+                    </p>
+
+                </div>
+
+
+
+                <div class="estadisticas">
+
+                    <div>
+
+                        <span>
+                            Estado
+                        </span>
+
+                        <strong id="estadoRobot">
+                            LISTO
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Nodos explorados
+                        </span>
+
+                        <strong id="exploradosRobot">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Longitud de ruta
+                        </span>
+
+                        <strong id="longitudRobot">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="formula-robot">
+
+                    <span>
+                        Para cada celda:
+                    </span>
+
+                    <strong>
+                        f(n) = g(n) + h(n)
+                    </strong>
+
+                </div>
+
+
+
+                <div class="detalle-robot">
+
+                    <h4>
+                        Celda evaluada
+                    </h4>
+
+                    <div id="detalleCelda">
+
+                        Presiona
+                        <b>Avanzar un paso</b>
+                        o
+                        <b>Buscar ruta con A*</b>.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="explicacion-heuristica">
+
+                    <strong>
+                        📏 Heurística utilizada
+                    </strong>
+
+                    <p>
+                        Utilizamos distancia Manhattan:
+                    </p>
+
+                    <div class="formula-secundaria">
+
+                        h(n) =
+                        |fila actual - fila meta|
+                        +
+                        |columna actual - columna meta|
+
+                    </div>
+
+                    <p>
+                        Esta estimación funciona bien porque
+                        el robot solo puede moverse horizontal
+                        o verticalmente.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- RESULTADO ROBOT -->
+
+        <section id="mensajeRobot"
+                 class="mensaje-robot">
+
+            <span>
+                🤖
+            </span>
+
+            <div>
+
+                <strong>
+                    El robot está listo.
+                </strong>
+
+                <p>
+                    Puedes modificar los obstáculos
+                    antes de comenzar.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CONEXIÓN VIDA REAL -->
+
+        <section class="aplicacion-real">
+
+            <div class="aplicacion-icono">
+                🚚
+            </div>
+
+            <div>
+
+                <span>
+                    APLICACIÓN EN LA VIDA REAL
+                </span>
+
+                <h3>
+                    Navegación y planificación de rutas
+                </h3>
+
+                <p>
+                    La misma idea puede utilizarse para modelar
+                    navegación de robots, videojuegos, rutas en
+                    mapas, logística y movimiento dentro de
+                    entornos con obstáculos.
+                </p>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RESUMEN
+         ================================================= -->
+
+    <section class="resumen">
+
+        <div>
+
+            <strong>
+                Recuerda
+            </strong>
+
+            <p>
+                A* no observa únicamente cuánto ha recorrido.
+                También utiliza una estimación de cuánto falta.
+            </p>
+
+        </div>
+
+
+        <div class="cadena">
+
+            g(n)
+            <span>+</span>
+            h(n)
+            <span>=</span>
+            f(n)
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    CC3074 — Modelización y Simulación ·
+    Universidad del Valle de Guatemala
+
+</footer>
+
+
+<script src="./app.js"></script>
+
+</body>
+
+</html>
