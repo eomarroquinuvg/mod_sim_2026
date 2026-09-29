@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Experimento con h — CC3074
+    </title>
+
+    <link rel="stylesheet"
+          href="./style.css">
+
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="header-contenido">
+
+        <div>
+
+            <span class="codigo">
+                CC3074
+            </span>
+
+            <h1>
+                Modelización y Simulación
+            </h1>
+
+            <p>
+                Métodos Numéricos — Experimento con h
+            </p>
+
+        </div>
+
+
+        <a href="../"
+           class="volver">
+
+            ← Volver al laboratorio
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="hero">
+
+    <div>
+
+        <span class="etiqueta">
+            LABORATORIO 03
+        </span>
+
+        <h2>
+            🎛️ Experimenta con h
+        </h2>
+
+        <p>
+            Modifica el tamaño de paso y observa cómo cambia
+            la aproximación numérica. Un valor de h más pequeño
+            implica más cálculos, pero normalmente permite
+            seguir con mayor detalle la evolución del sistema.
+        </p>
+
+    </div>
+
+
+    <div class="pregunta">
+
+        <span>
+            PREGUNTA DEL EXPERIMENTO
+        </span>
+
+        <strong>
+            ¿Qué ocurre cuando h cambia?
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ¿QUÉ ES h?
+     ===================================================== -->
+
+<section class="explicacion-h">
+
+    <div class="h-grande">
+        h
+    </div>
+
+    <div>
+
+        <span class="mini-etiqueta">
+            TAMAÑO DE PASO
+        </span>
+
+        <h2>
+            ¿Qué controla h?
+        </h2>
+
+        <p>
+            El valor de <strong>h</strong> determina cuánto
+            avanza el tiempo en cada iteración del método numérico.
+        </p>
+
+    </div>
+
+
+    <div class="ejemplo-h">
+
+        <div>
+            <span>h = 2</span>
+            <strong>0 → 2 → 4 → 6 → 8 → 10</strong>
+        </div>
+
+        <div>
+            <span>h = 1</span>
+            <strong>0 → 1 → 2 → 3 → ... → 10</strong>
+        </div>
+
+        <div>
+            <span>h = 0.5</span>
+            <strong>0 → 0.5 → 1 → 1.5 → ... → 10</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HIPÓTESIS
+     ===================================================== -->
+
+<section class="hipotesis">
+
+    <span class="icono">
+        🔬
+    </span>
+
+    <div>
+
+        <span class="mini-etiqueta">
+            ANTES DE EXPERIMENTAR
+        </span>
+
+        <h3>
+            Formula una hipótesis
+        </h3>
+
+        <p>
+            ¿Qué crees que ocurrirá con el error cuando
+            hagamos h cada vez más pequeño?
+        </p>
+
+    </div>
+
+
+    <select id="hipotesisSelect">
+
+        <option value="">
+            Selecciona tu hipótesis...
+        </option>
+
+        <option value="disminuye">
+            El error disminuirá
+        </option>
+
+        <option value="aumenta">
+            El error aumentará
+        </option>
+
+        <option value="igual">
+            El error será igual
+        </option>
+
+    </select>
+
+</section>
+
+
+<!-- =====================================================
+     CONTROL DEL EXPERIMENTO
+     ===================================================== -->
+
+<section class="panel control-panel">
+
+    <div class="panel-header">
+
+        <span class="numero">
+            01
+        </span>
+
+        <div>
+
+            <h3>
+                Configura el experimento
+            </h3>
+
+            <p>
+                Mueve el control y observa cómo cambia
+                toda la simulación.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="control-h">
+
+        <div class="valor-h">
+
+            <span>
+                Tamaño de paso
+            </span>
+
+            <strong>
+                h =
+                <span id="valorH">
+                    1.00
+                </span>
+                min
+            </strong>
+
+        </div>
+
+
+        <input
+            type="range"
+            id="sliderH"
+            min="0.1"
+            max="2"
+            step="0.1"
+            value="1"
+        >
+
+
+        <div class="marcas">
+
+            <span>
+                0.1
+            </span>
+
+            <span>
+                0.5
+            </span>
+
+            <span>
+                1.0
+            </span>
+
+            <span>
+                1.5
+            </span>
+
+            <span>
+                2.0
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="botones-rapidos">
+
+        <span>
+            Prueba rápidamente:
+        </span>
+
+        <button data-h="2">
+            h = 2
+        </button>
+
+        <button data-h="1">
+            h = 1
+        </button>
+
+        <button data-h="0.5">
+            h = 0.5
+        </button>
+
+        <button data-h="0.25">
+            h = 0.25
+        </button>
+
+        <button data-h="0.1">
+            h = 0.1
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INDICADORES
+     ===================================================== -->
+
+<section class="indicadores">
+
+    <article>
+
+        <span class="indicador-icono">
+            👣
+        </span>
+
+        <div>
+            <span>
+                Número de pasos
+            </span>
+
+            <strong id="numeroPasos">
+                10
+            </strong>
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="indicador-icono">
+            📘
+        </span>
+
+        <div>
+            <span>
+                Error final Euler
+            </span>
+
+            <strong id="errorEuler">
+                -
+            </strong>
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="indicador-icono">
+            🚀
+        </span>
+
+        <div>
+            <span>
+                Error final RK4
+            </span>
+
+            <strong id="errorRK4">
+                -
+            </strong>
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="indicador-icono">
+            🧮
+        </span>
+
+        <div>
+            <span>
+                Evaluaciones Euler
+            </span>
+
+            <strong id="evaluacionesEuler">
+                -
+            </strong>
+        </div>
+
+    </article>
+
+
+    <article>
+
+        <span class="indicador-icono">
+            ⚙️
+        </span>
+
+        <div>
+            <span>
+                Evaluaciones RK4
+            </span>
+
+            <strong id="evaluacionesRK4">
+                -
+            </strong>
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- =====================================================
+     INTERPRETACIÓN
+     ===================================================== -->
+
+<section id="interpretacion"
+         class="interpretacion">
+
+    <span>
+        💡
+    </span>
+
+    <div>
+
+        <strong>
+            Observación
+        </strong>
+
+        <p>
+            Modifica h para comenzar el experimento.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GRÁFICA
+     ===================================================== -->
+
+<section class="panel grafica-panel">
+
+    <div class="panel-header">
+
+        <span class="numero">
+            02
+        </span>
+
+        <div>
+
+            <h3>
+                Comparación visual
+            </h3>
+
+            <p>
+                Observa cómo Euler y RK4 se aproximan
+                a la solución exacta.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="grafica-layout">
+
+        <div>
+
+            <svg id="grafica"
+                 viewBox="0 0 950 460">
+
+                <g id="cuadricula">
+                </g>
+
+
+                <line
+                    x1="80"
+                    y1="35"
+                    x2="80"
+                    y2="380"
+                    class="eje"
+                />
+
+
+                <line
+                    x1="80"
+                    y1="380"
+                    x2="900"
+                    y2="380"
+                    class="eje"
+                />
+
+
+                <text
+                    x="25"
+                    y="40"
+                    class="label-eje">
+                    T (°C)
+                </text>
+
+
+                <text
+                    x="840"
+                    y="425"
+                    class="label-eje">
+                    t (min)
+                </text>
+
+
+                <path
+                    id="curvaExacta"
+                    class="curva-exacta">
+                </path>
+
+
+                <polyline
+                    id="lineaEuler"
+                    class="linea-euler">
+                </polyline>
+
+
+                <polyline
+                    id="lineaRK4"
+                    class="linea-rk4">
+                </polyline>
+
+
+                <g id="puntosEuler">
+                </g>
+
+
+                <g id="puntosRK4">
+                </g>
+
+            </svg>
+
+        </div>
+
+
+        <div class="leyenda">
+
+            <div>
+
+                <span class="muestra exacta">
+                </span>
+
+                <div>
+                    <strong>
+                        Exacta
+                    </strong>
+
+                    <small>
+                        Referencia
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <span class="muestra euler">
+                </span>
+
+                <div>
+                    <strong>
+                        Euler
+                    </strong>
+
+                    <small>
+                        Aproximación
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <span class="muestra rk4">
+                </span>
+
+                <div>
+                    <strong>
+                        RK4
+                    </strong>
+
+                    <small>
+                        Aproximación
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COSTO VS PRECISIÓN
+     ===================================================== -->
+
+<section class="comparacion-grid">
+
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <span class="numero">
+                03
+            </span>
+
+            <div>
+
+                <h3>
+                    Precisión
+                </h3>
+
+                <p>
+                    ¿Qué tan cerca estamos
+                    de la solución exacta?
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="precision">
+
+            <div>
+
+                <span>
+                    Euler
+                </span>
+
+                <div class="barra-error">
+
+                    <div id="barraErrorEuler"
+                         class="relleno-error euler">
+                    </div>
+
+                </div>
+
+                <strong id="textoErrorEuler">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    RK4
+                </span>
+
+                <div class="barra-error">
+
+                    <div id="barraErrorRK4"
+                         class="relleno-error rk4">
+                    </div>
+
+                </div>
+
+                <strong id="textoErrorRK4">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <article class="panel">
+
+        <div class="panel-header">
+
+            <span class="numero">
+                04
+            </span>
+
+            <div>
+
+                <h3>
+                    Costo computacional
+                </h3>
+
+                <p>
+                    Aquí medimos cuántas veces
+                    evaluamos f(t,y).
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="costo">
+
+            <div>
+
+                <span>
+                    Euler
+                </span>
+
+                <strong id="costoEuler">
+                    -
+                </strong>
+
+                <small>
+                    evaluaciones
+                </small>
+
+            </div>
+
+
+            <div class="vs">
+                VS.
+            </div>
+
+
+            <div>
+
+                <span>
+                    RK4
+                </span>
+
+                <strong id="costoRK4">
+                    -
+                </strong>
+
+                <small>
+                    evaluaciones
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="nota-costo">
+
+            Euler evalúa una pendiente por paso.
+            RK4 evalúa cuatro pendientes por paso.
+
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- =====================================================
+     TABLA
+     ===================================================== -->
+
+<section class="panel tabla-panel">
+
+    <div class="panel-header">
+
+        <span class="numero">
+            05
+        </span>
+
+        <div>
+
+            <h3>
+                Resultados del experimento
+            </h3>
+
+            <p>
+                Observa algunos de los valores calculados
+                con el h seleccionado.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="tabla-scroll">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Paso
+                    </th>
+
+                    <th>
+                        t
+                    </th>
+
+                    <th>
+                        Exacta
+                    </th>
+
+                    <th>
+                        Euler
+                    </th>
+
+                    <th>
+                        Error Euler
+                    </th>
+
+                    <th>
+                        RK4
+                    </th>
+
+                    <th>
+                        Error RK4
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="tablaResultados">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPERIMENTOS RECOMENDADOS
+     ===================================================== -->
+
+<section class="retos">
+
+    <div class="retos-header">
+
+        <span>
+            🧪
+        </span>
+
+        <div>
+
+            <span class="mini-etiqueta">
+                PRUEBA ESTO
+            </span>
+
+            <h2>
+                Tres experimentos
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="retos-grid">
+
+        <article>
+
+            <span>
+                EXPERIMENTO 1
+            </span>
+
+            <strong>
+                h = 2
+            </strong>
+
+            <p>
+                ¿Qué ocurre con Euler cuando
+                realizamos solamente 5 pasos?
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                EXPERIMENTO 2
+            </span>
+
+            <strong>
+                h = 1
+            </strong>
+
+            <p>
+                Compara este resultado con el laboratorio
+                anterior.
+            </p>
+
+        </article>
+
+
+        <article>
+
+            <span>
+                EXPERIMENTO 3
+            </span>
+
+            <strong>
+                h = 0.1
+            </strong>
+
+            <p>
+                Ahora necesitamos 100 pasos.
+                ¿Qué ocurre con el error?
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+     ===================================================== -->
+
+<section class="conclusion">
+
+    <div class="conclusion-icono">
+        🧠
+    </div>
+
+
+    <div>
+
+        <span>
+            IDEA CENTRAL
+        </span>
+
+        <h2>
+            Precisión y costo están relacionados
+        </h2>
+
+        <p>
+            Reducir h significa avanzar en intervalos más
+            pequeños. Esto normalmente mejora la aproximación,
+            pero también aumenta la cantidad de pasos y,
+            por lo tanto, el trabajo computacional.
+        </p>
+
+    </div>
+
+
+    <div class="cadena">
+
+        <span>
+            h más pequeño
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Más pasos
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Más cálculos
+        </span>
+
+        <b>→</b>
+
+        <span>
+            Mayor detalle
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VERIFICACIÓN DE HIPÓTESIS
+     ===================================================== -->
+
+<section class="verificacion">
+
+    <div>
+
+        <span>
+            🔬 CIERRE DEL EXPERIMENTO
+        </span>
+
+        <h3>
+            ¿Tu hipótesis coincidió con los resultados?
+        </h3>
+
+        <p id="resultadoHipotesis">
+            Selecciona una hipótesis arriba y experimenta
+            con diferentes valores de h.
+        </p>
+
+    </div>
+
+
+    <button id="verificarHipotesis"
+            class="boton-verificar">
+
+        Verificar hipótesis
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     REGRESAR
+     ===================================================== -->
+
+<section class="regreso-laboratorio">
+
+    <div>
+
+        <span>
+            ✓ UNIDAD COMPLETADA
+        </span>
+
+        <h3>
+            Métodos Numéricos
+        </h3>
+
+        <p>
+            Ya exploraste Euler, RK4 y el efecto
+            del tamaño de paso.
+        </p>
+
+    </div>
+
+
+    <a href="../"
+       class="boton-regreso">
+
+        ← Volver al laboratorio
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <strong>
+        CC3074 — Modelización y Simulación
+    </strong>
+
+    <span>
+        Universidad del Valle de Guatemala · 2026
+    </span>
+
+</footer>
+
+
+<script src="./app.js"></script>
+
+</body>
+
+</html>
