@@ -1,0 +1,9 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Heurísticas</title><link rel="stylesheet" href="../style.css"></head><body><header><h1>🗺️ Misión: recorrer las ciudades</h1><p>Vecino más cercano vs. óptimo</p></header><main>
+<a class="back" href="../">← Volver al laboratorio</a><div class="grid" style="margin-top:14px"><section class="panel"><h2>Mapa</h2>
+<svg viewBox="0 0 520 320" id="map"><g id="edges"></g><g id="nodes"></g></svg></section>
+<section class="panel"><h2>Decisión heurística</h2><label>Inicio <select id="start"><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
+<div class="controls"><button class="btn" id="reset">Reiniciar</button><button class="btn" id="step">Siguiente decisión</button><button class="btn secondary" id="all">Resolver completo</button></div>
+<div class="stat" id="status"></div><div id="log" class="log"></div></section></div>
+<section class="panel" style="margin-top:16px"><h2>Comparación</h2><div id="compare" class="note">Completa la ruta para comparar la heurística con todas las permutaciones posibles.</div></section>
+</main><script src="app.js"></script></body></html>

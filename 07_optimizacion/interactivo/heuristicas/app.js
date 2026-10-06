@@ -1,1 +1,11 @@
-asdfsdf
+
+const D={A:{B:10,C:15,D:20},B:{A:10,C:35,D:25},C:{A:15,B:35,D:30},D:{A:20,B:25,C:30}},pos={A:[80,80],B:[420,70],C:[100,260],D:[410,250]};
+let current,visited,route,cost,done;
+const $=s=>document.querySelector(s), key=(a,b)=>[a,b].sort().join("-");
+function draw(){let es="",seen=new Set;Object.keys(D).forEach(a=>Object.keys(D[a]).forEach(b=>{let k=key(a,b);if(seen.has(k))return;seen.add(k);let [x1,y1]=pos[a],[x2,y2]=pos[b],active=route.some((r,i)=>i&&key(route[i-1],r)==k);es+=`<line class="edge ${active?"active":""}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/><text x="${(x1+x2)/2}" y="${(y1+y2)/2-5}" font-size="14">${D[a][b]}</text>`}));$("#edges").innerHTML=es;$("#nodes").innerHTML=Object.entries(pos).map(([n,[x,y]])=>`<circle class="node" cx="${x}" cy="${y}" r="24"/><text x="${x}" y="${y+5}" text-anchor="middle" font-weight="bold">${n}</text>`).join("")}
+function reset(){current=$("#start").value;visited=new Set([current]);route=[current];cost=0;done=false;$("#log").textContent=`Inicio en ${current}.`;$("#compare").textContent="Completa la ruta para comparar.";update()}
+function step(){if(done)return;if(visited.size===4){cost+=D[current][route[0]];route.push(route[0]);done=true;$("#log").textContent+=`\nRegreso ${current} → ${route[0]} (${D[current][route[0]]}).`;compare();update();return}let opts=Object.entries(D[current]).filter(([n])=>!visited.has(n)).sort((a,b)=>a[1]-b[1]);let [next,d]=opts[0];$("#log").textContent+=`\nDesde ${current}: ${opts.map(x=>x[0]+"="+x[1]).join(", ")} → elijo ${next}.`;cost+=d;current=next;visited.add(next);route.push(next);update()}
+function update(){$("#status").textContent=`Ruta: ${route.join(" → ")} | Costo: ${cost}`;draw()}
+function perms(a){if(a.length<2)return[a];let r=[];a.forEach((x,i)=>perms(a.slice(0,i).concat(a.slice(i+1))).forEach(p=>r.push([x,...p])));return r}
+function compare(){let s=route[0],others=Object.keys(D).filter(x=>x!==s),best=Infinity,br=null;perms(others).forEach(p=>{let r=[s,...p,s],c=0;for(let i=0;i<r.length-1;i++)c+=D[r[i]][r[i+1]];if(c<best){best=c;br=r}});$("#compare").innerHTML=`Heurística: <b>${route.join(" → ")}</b>, costo <b>${cost}</b><br>Óptimo exhaustivo: <b>${br.join(" → ")}</b>, costo <b>${best}</b><br>Diferencia: <b>${cost-best}</b>.`}
+$("#reset").onclick=reset;$("#step").onclick=step;$("#all").onclick=()=>{while(!done)step()};$("#start").onchange=reset;reset();
