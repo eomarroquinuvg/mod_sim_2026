@@ -12,3 +12,118 @@ main{max-width:1120px;margin:auto;padding:48px 24px}.intro{display:grid;grid-tem
 footer{text-align:center;color:#77857d;padding:28px 16px 40px;font-size:.85rem}
 @media(max-width:800px){.intro,.lab-card{grid-template-columns:1fr}.learning-path{grid-template-columns:1fr}.path-arrow{transform:rotate(90deg);text-align:center}.path-step{min-height:auto}.compare-grid{grid-template-columns:1fr}.lab-number{font-size:3rem}.mission{border-top:1px solid var(--line)}}
 @media(max-width:520px){.hero-inner{padding:52px 18px 44px}main{padding:35px 14px}.lab-main{padding:26px 18px 22px 24px;display:block}.lab-icon{margin-bottom:8px}.challenge{align-items:flex-start}.question-card{align-items:flex-start}}
+
+
+/* =========================================================
+   COMPONENTES COMPARTIDOS POR LOS LABORATORIOS INTERNOS
+   ========================================================= */
+body > header:not(.hero){
+  background:linear-gradient(125deg,#064b28,#008D36 70%,#1aa151);
+  color:#fff;
+  padding:30px max(22px,calc((100% - 1120px)/2 + 24px));
+}
+body > header:not(.hero) h1{margin:0;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15}
+body > header:not(.hero) p{margin:8px 0 0;color:#e9f8ee;font-size:1rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.panel,.card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;
+}
+.panel h2,.card h2{margin-top:0}
+a.card{display:block;color:inherit;text-decoration:none;transition:transform .15s,border-color .15s}
+a.card:hover{transform:translateY(-2px);border-color:var(--green)}
+
+.back{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--green-dark);font-weight:800;text-decoration:none;
+  background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+}
+.back:hover{border-color:var(--green);background:var(--green-soft)}
+
+.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0}
+.btn{
+  appearance:none;border:0;border-radius:11px;padding:10px 15px;
+  min-height:42px;font-weight:800;cursor:pointer;background:var(--green);color:#fff;
+  font-size:.94rem;
+}
+.btn:hover{background:var(--green-dark)}
+.btn.secondary{background:#e8f3ec;color:var(--green-deep);border:1px solid #cfe3d5}
+.btn.secondary:hover{background:#dceee2}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+.stat{font-weight:800;color:var(--green-deep);margin:8px 0}
+.note{
+  background:var(--green-soft);border-left:4px solid var(--green);
+  padding:13px 14px;border-radius:9px;color:var(--ink)
+}
+.badge,.pill{
+  display:inline-block;padding:4px 9px;border-radius:999px;
+  background:var(--green-soft);color:var(--green-deep);font-size:.8rem;font-weight:800
+}
+.log{
+  background:#101914;color:#e9f8ee;border-radius:13px;padding:14px;
+  min-height:120px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  line-height:1.55;overflow:auto
+}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.bar{height:18px;background:#e5ece7;border-radius:999px;overflow:hidden}
+.bar>span{display:block;height:100%;background:var(--green);transition:width .25s}
+
+table{border-collapse:separate;border-spacing:0;width:100%;overflow:hidden;border:1px solid var(--line);border-radius:12px}
+th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px;text-align:center}
+th{background:var(--green-soft);color:var(--green-deep)}
+tr:last-child td,tr:last-child th{border-bottom:0}
+tr th:last-child,tr td:last-child{border-right:0}
+
+input,select{
+  padding:9px 10px;border:1px solid #b9c9bf;border-radius:9px;font-size:16px;background:#fff;color:var(--ink)
+}
+input[type="range"]{padding:0;accent-color:var(--green)}
+label{font-weight:650}
+
+svg{max-width:100%;height:auto;display:block}
+.edge{stroke:#839189;stroke-width:3}
+.edge.active,.active{stroke:#e98615!important;stroke-width:6!important}
+.node{fill:#fff;stroke:var(--green);stroke-width:4}
+#map text{fill:var(--ink)}
+#chart text{fill:var(--muted)}
+
+.route{
+  width:100%;text-align:left;cursor:pointer;font:inherit;
+  transition:transform .15s,border-color .15s,background .15s
+}
+.route:hover{transform:translateY(-2px);border-color:var(--green);background:#fbfefc}
+
+.tab{margin-top:8px}
+.tab[hidden]{display:none!important}
+
+/* Separación y jerarquía en páginas internas */
+body > main > .back + .grid,
+body > main > .back + .controls{margin-top:18px}
+body > main .panel + .panel{margin-top:16px}
+
+/* Población genética */
+#population > div{
+  background:#fbfdfb;border:1px solid #edf3ef;border-radius:10px;padding:8px 10px
+}
+
+/* Mapa heurístico */
+#map{
+  background:linear-gradient(180deg,#fbfefc,#f2f8f4);
+  border:1px solid var(--line);border-radius:16px;padding:8px
+}
+
+/* Logística */
+#transport,#transship,#assign{max-width:100%}
+#rresult,#aresult,#tstate{margin-top:12px}
+
+@media(max-width:800px){
+  body > header:not(.hero){padding:24px 18px}
+  .grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .panel,.card{padding:16px}
+  .controls .btn{width:100%}
+  .controls{align-items:stretch}
+  #population > div{grid-template-columns:1fr!important}
+}
