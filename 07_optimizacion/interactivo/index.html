@@ -1,9 +1,133 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Laboratorio interactivo — Optimización</title><link rel="stylesheet" href="style.css"></head><body>
-<header><h1>Laboratorio interactivo — Optimización</h1><p>CC3074 · Modelización y Simulación · UVG</p></header>
-<main><div class="note"><b>Ruta:</b> observa → experimenta → cambia parámetros → interpreta el resultado.</div><br>
-<div class="grid">
-<a class="card" href="algoritmo_genetico/"><h2>🧬 Algoritmo Genético</h2><p>Observa una población evolucionar. Selecciona, cruza y muta cromosomas hasta acercarse a x = 31.</p><span class="badge">Generación por generación</span></a>
-<a class="card" href="heuristicas/"><h2>🗺️ Heurísticas</h2><p>Viaja entre ciudades usando vecino más cercano y compáralo contra el óptimo por fuerza bruta.</p><span class="badge">Decisiones locales</span></a>
-<a class="card" href="logistica/"><h2>🚚 Centro Logístico</h2><p>Experimenta con transporte, transbordo y asignación en tres misiones relacionadas.</p><span class="badge">Costos y decisiones</span></a>
-</div></main></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio de Optimización | CC3074</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">CC3074 · MODELIZACIÓN Y SIMULACIÓN</div>
+    <h1>Laboratorio de <span>Optimización</span></h1>
+    <p class="lead">Explora cómo una computadora busca, compara y mejora soluciones. Aquí no vienes solamente a leer algoritmos: vienes a <strong>hacerlos funcionar</strong>.</p>
+    <div class="hero-tags">
+      <span>🧬 Algoritmos Genéticos</span>
+      <span>🗺️ Heurísticas</span>
+      <span>🚚 Transporte</span>
+      <span>🔀 Transbordo</span>
+      <span>👥 Asignación</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="intro">
+  <div>
+    <span class="section-label">¿QUÉ VAMOS A HACER?</span>
+    <h2>De un problema a una decisión</h2>
+    <p>En cada experiencia podrás cambiar parámetros, ejecutar el algoritmo paso a paso y observar cómo las decisiones modifican el resultado.</p>
+  </div>
+  <div class="question-card">
+    <span class="question-icon">?</span>
+    <div><b>Pregunta guía</b><br>¿Cómo decide un algoritmo qué solución probar, conservar o descartar?</div>
+  </div>
+</section>
+
+<section>
+  <span class="section-label">RUTA DE APRENDIZAJE</span>
+  <h2 class="section-title">Así debes recorrer el laboratorio</h2>
+  <div class="learning-path">
+    <div class="path-step"><span>01</span><div class="path-icon">👀</div><h3>Observa</h3><p>Identifica el problema, los datos y el objetivo.</p></div>
+    <div class="path-arrow">→</div>
+    <div class="path-step"><span>02</span><div class="path-icon">🎛️</div><h3>Experimenta</h3><p>Cambia parámetros y ejecuta decisiones.</p></div>
+    <div class="path-arrow">→</div>
+    <div class="path-step"><span>03</span><div class="path-icon">💡</div><h3>Comprende</h3><p>Relaciona cada cambio con el comportamiento del algoritmo.</p></div>
+    <div class="path-arrow">→</div>
+    <div class="path-step"><span>04</span><div class="path-icon">💻</div><h3>Aplica</h3><p>Conecta lo observado con el código Python del curso.</p></div>
+  </div>
+</section>
+
+<section class="labs">
+  <span class="section-label">EXPERIENCIAS INTERACTIVAS</span>
+  <h2 class="section-title">Elige una misión</h2>
+
+  <article class="lab-card genetic">
+    <div class="lab-number">01</div>
+    <div class="lab-main">
+      <div class="lab-icon">🧬</div>
+      <div>
+        <span class="pill">EVOLUCIÓN</span>
+        <h2>Laboratorio Genético</h2>
+        <p>Haz evolucionar una población de cromosomas hasta encontrar valores con mejor fitness.</p>
+        <div class="concepts"><span>Población</span><span>Fitness</span><span>Selección</span><span>Cruce</span><span>Mutación</span></div>
+      </div>
+    </div>
+    <div class="mission">
+      <b>Tu misión</b>
+      <p>Modifica la probabilidad de mutación, avanza generación por generación y descubre qué ocurre con el mejor individuo.</p>
+      <a class="enter" href="algoritmo_genetico/">Entrar al laboratorio <span>→</span></a>
+    </div>
+  </article>
+
+  <article class="lab-card heuristic">
+    <div class="lab-number">02</div>
+    <div class="lab-main">
+      <div class="lab-icon">🗺️</div>
+      <div>
+        <span class="pill">DECISIONES LOCALES</span>
+        <h2>Desafío Heurístico</h2>
+        <p>Construye una ruta con vecino más cercano y descubre si una buena decisión inmediata produce la mejor solución global.</p>
+        <div class="concepts"><span>Vecinos</span><span>Distancia</span><span>Ruta</span><span>Fuerza bruta</span></div>
+      </div>
+    </div>
+    <div class="mission">
+      <b>Tu misión</b>
+      <p>Avanza una decisión a la vez. Al terminar, compara tu ruta heurística contra el óptimo exhaustivo.</p>
+      <a class="enter" href="heuristicas/">Resolver el desafío <span>→</span></a>
+    </div>
+  </article>
+
+  <article class="lab-card logistics">
+    <div class="lab-number">03</div>
+    <div class="lab-main">
+      <div class="lab-icon">🚚</div>
+      <div>
+        <span class="pill">INVESTIGACIÓN DE OPERACIONES</span>
+        <h2>Centro Logístico</h2>
+        <p>Administra mercancía, rutas intermedias y asignaciones tratando de reducir el costo total.</p>
+        <div class="concepts"><span>Transporte</span><span>Transbordo</span><span>Asignación</span><span>Costos</span></div>
+      </div>
+    </div>
+    <div class="mission">
+      <b>Tu misión</b>
+      <p>Completa tres retos: distribuir productos, seleccionar una ruta de transbordo y asignar tareas sin repetirlas.</p>
+      <a class="enter" href="logistica/">Abrir centro logístico <span>→</span></a>
+    </div>
+  </article>
+</section>
+
+<section class="compare">
+  <span class="section-label">ANTES DE TERMINAR</span>
+  <h2 class="section-title">No todos los problemas se resuelven igual</h2>
+  <div class="compare-grid">
+    <div><div class="mini-icon">🧬</div><b>Genético</b><p>Explora muchas soluciones y las hace evolucionar.</p><small>Pregunta: ¿cómo mejora una población?</small></div>
+    <div><div class="mini-icon">🗺️</div><b>Heurístico</b><p>Usa una regla para tomar decisiones prometedoras rápidamente.</p><small>Pregunta: ¿rápido significa óptimo?</small></div>
+    <div><div class="mini-icon">🚚</div><b>Logística</b><p>Distribuye recursos respetando oferta, demanda y costos.</p><small>Pregunta: ¿qué decisión minimiza el costo?</small></div>
+  </div>
+</section>
+
+<section class="challenge">
+  <div class="challenge-icon">🏁</div>
+  <div>
+    <span class="section-label light">RETO FINAL</span>
+    <h2>Piensa como quien diseña el algoritmo</h2>
+    <p>Después de experimentar, no preguntes solamente “¿qué resultado dio?”. Pregunta también <strong>por qué tomó esas decisiones, qué información utilizó y qué podría cambiar para obtener otra solución.</strong></p>
+  </div>
+</section>
+</main>
+
+<footer>Universidad del Valle de Guatemala · CC3074 Modelización y Simulación · Laboratorio interactivo 2026</footer>
+</body>
+</html>

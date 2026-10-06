@@ -1,12 +1,14 @@
 # Interactivo — 07 Optimización
 
-Copiar esta carpeta como:
+Portal visual del módulo 07 de CC3074 Modelización y Simulación.
 
+Incluye:
+- Algoritmo Genético
+- Heurísticas
+- Centro Logístico: transporte, transbordo y asignación
+
+Ruta didáctica del portal:
+**Observa → Experimenta → Comprende → Aplica**
+
+Copiar el contenido de esta carpeta en:
 `07_optimizacion/interactivo/`
-
-## Experiencias
-1. **Algoritmo Genético:** población, fitness, selección, cruce, mutación y evolución automática.
-2. **Heurísticas:** vecino más cercano paso a paso y comparación con fuerza bruta.
-3. **Centro Logístico:** transporte por costo mínimo, transbordo por rutas y asignación persona-tarea.
-
-No requiere servidor ni dependencias externas. Puede publicarse directamente con GitHub Pages.
