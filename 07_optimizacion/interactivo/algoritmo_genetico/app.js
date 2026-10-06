@@ -1,1 +1,12 @@
-sadf
+
+const $=s=>document.querySelector(s); let population=[],generation=0,history=[],timer=null;
+const decode=a=>parseInt(a.join(""),2), fit=a=>decode(a)**2, rnd=()=>Array.from({length:5},()=>Math.random()<.5?0:1);
+function tournament(){let c=Array.from({length:3},()=>population[Math.floor(Math.random()*population.length)]);return c.reduce((a,b)=>fit(a)>fit(b)?a:b)}
+function cross(a,b){let p=1+Math.floor(Math.random()*4);return [a.slice(0,p).concat(b.slice(p)),b.slice(0,p).concat(a.slice(p)),p]}
+function mutate(a){let p=+$("#mut").value/100,changes=[];a=a.slice();a.forEach((v,i)=>{if(Math.random()<p){a[i]=1-v;changes.push(i)}});return [a,changes]}
+function reset(){stop();generation=0;history=[];population=Array.from({length:+$("#pop").value},rnd);$("#log").textContent="Población inicial creada. Observa los cromosomas y presiona Evolucionar.";render()}
+function evolve(){let next=[],events=[];while(next.length<population.length){let a=tournament(),b=tournament(),[h1,h2,p]=cross(a,b),m1=mutate(h1),m2=mutate(h2);next.push(m1[0]);if(next.length<population.length)next.push(m2[0]);if(events.length<3)events.push(`Padres ${a.join("")} + ${b.join("")} | corte ${p} | hijos ${m1[0].join("")}, ${m2[0].join("")}`)}population=next;generation++;history.push(Math.max(...population.map(fit)));$("#log").textContent=`Generación ${generation}\n`+events.join("\n");render()}
+function render(){let sorted=[...population].sort((a,b)=>fit(b)-fit(a));$("#population").innerHTML=sorted.map((a,i)=>`<div style="display:grid;grid-template-columns:80px 1fr 70px 90px;gap:8px;align-items:center;margin:7px 0"><b>${i?"":"⭐ "}${a.join("")}</b><div class="bar"><span style="width:${fit(a)/9.61}%"></span></div><span>x=${decode(a)}</span><span>f=${fit(a)}</span></div>`).join("");$("#generation").textContent=generation;$("#best").textContent=sorted.length?fit(sorted[0]):"-";draw()}
+function draw(){let s=$("#chart"),w=500,h=220,p=30;s.innerHTML=`<line x1="${p}" y1="${h-p}" x2="${w-p}" y2="${h-p}" stroke="#777"/><line x1="${p}" y1="${p}" x2="${p}" y2="${h-p}" stroke="#777"/><text x="5" y="35" font-size="12">961</text><text x="220" y="215" font-size="12">Generaciones</text>`;if(!history.length)return;let pts=history.map((v,i)=>`${p+(i/(Math.max(1,history.length-1)))*(w-2*p)},${h-p-(v/961)*(h-2*p)}`).join(" ");s.innerHTML+=`<polyline points="${pts}" fill="none" stroke="#008D36" stroke-width="4"/>`}
+function stop(){if(timer){clearInterval(timer);timer=null;$("#auto").textContent="Automático"}}
+$("#new").onclick=reset;$("#step").onclick=evolve;$("#mut").oninput=()=>$("#mutv").textContent=$("#mut").value+"%";$("#auto").onclick=()=>{if(timer){stop()}else{timer=setInterval(()=>{evolve();if(generation>=50)stop()},500);$("#auto").textContent="Detener"}};reset();

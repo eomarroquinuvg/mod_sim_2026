@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Algoritmo Genético</title><link rel="stylesheet" href="../style.css"></head><body>
+<header><h1>🧬 Misión genética: maximizar f(x)=x²</h1><p>0 ≤ x ≤ 31 · cromosomas de 5 bits</p></header>
+<main><a class="back" href="../">← Volver al laboratorio</a>
+<div class="grid" style="margin-top:14px"><section class="panel"><h2>Controles</h2>
+<label>Población <input id="pop" type="number" min="4" max="30" value="8"></label>
+<label> Mutación <input id="mut" type="range" min="0" max="50" value="10"> <b id="mutv">10%</b></label>
+<div class="controls"><button class="btn" id="new">Nueva población</button><button class="btn" id="step">Evolucionar 1 generación</button><button class="btn secondary" id="auto">Automático</button></div>
+<div class="stat">Generación: <span id="generation">0</span> · Mejor fitness: <span id="best">-</span></div>
+<p class="note">Objetivo conocido para este ejemplo: <b>x=31</b>, fitness <b>961</b>. El algoritmo no recibe esa respuesta; intenta descubrirla.</p></section>
+<section class="panel"><h2>Evolución del mejor fitness</h2><svg id="chart" viewBox="0 0 500 220" aria-label="Gráfica de fitness"></svg></section></div>
+<section class="panel" style="margin-top:16px"><h2>Población actual</h2><div id="population"></div></section>
+<section class="panel" style="margin-top:16px"><h2>¿Qué ocurrió?</h2><div id="log" class="log"></div></section>
+</main><script src="app.js"></script></body></html>
