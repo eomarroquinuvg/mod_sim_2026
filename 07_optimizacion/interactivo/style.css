@@ -1,0 +1,18 @@
+
+:root{--green:#008D36;--dark:#063b20;--light:#eef8f2;--ink:#17221b;--muted:#617067;--line:#d9e6dd;--white:#fff;--warn:#fff4d6}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#f7faf8}
+header{background:var(--green);color:white;padding:18px 22px} header h1{margin:0;font-size:1.45rem} header p{margin:5px 0 0;opacity:.92}
+main{max-width:1120px;margin:auto;padding:22px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card,.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}.card h2,.panel h2{margin-top:0}
+a.card{display:block;color:inherit;text-decoration:none;transition:.15s}a.card:hover{transform:translateY(-2px);border-color:var(--green)}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;background:var(--green);color:white;margin:4px}
+.btn.secondary{background:#e8f3ec;color:var(--dark)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.stat{font-weight:700;color:var(--dark)}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.note{background:var(--light);border-left:4px solid var(--green);padding:12px;border-radius:8px}
+table{border-collapse:collapse;width:100%}th,td{border:1px solid var(--line);padding:8px;text-align:center}th{background:var(--light)}
+.bar{height:18px;background:#e5ece7;border-radius:99px;overflow:hidden}.bar>span{display:block;height:100%;background:var(--green)}
+.log{background:#111a14;color:#e7f5eb;border-radius:12px;padding:12px;min-height:120px;white-space:pre-wrap;font-family:monospace}
+svg{max-width:100%;height:auto}.node{fill:white;stroke:var(--green);stroke-width:3}.edge{stroke:#718078;stroke-width:3}.active{stroke:#e98615!important;stroke-width:6!important}
+.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--light);font-size:.85rem}.back{color:var(--green);font-weight:700;text-decoration:none}
+input,select{padding:9px;border:1px solid #bccbc1;border-radius:8px;font-size:16px}
+@media(max-width:600px){main{padding:12px}header{padding:15px}.card,.panel{padding:13px}}
